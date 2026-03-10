@@ -4,6 +4,7 @@ import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Portfolio from '@/components/Portfolio'
 import About from '@/components/About'
+import Preventivo from '@/components/Preventivo'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <About />
       <Portfolio />
+      <Preventivo />
       <Footer />
     </main>
   )

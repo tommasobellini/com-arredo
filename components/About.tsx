@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function About() {
   return (
@@ -13,10 +14,12 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1000&auto=format&fit=crop" 
               alt="Artigianato legno" 
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
             />
             <div className="absolute inset-0 ring-black-10 rounded-2xl" />
           </div>

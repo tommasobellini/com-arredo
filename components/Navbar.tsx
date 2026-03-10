@@ -91,7 +91,7 @@ export default function Navbar() {
         {/* Right: CTA & Mobile Toggle */}
         <div style={{ flex: '1 0 0%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '2rem' }}>
           <button 
-            onClick={() => document.getElementById('contatti')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('preventivo')?.scrollIntoView({ behavior: 'smooth' })}
             className="hidden sm:block"
             style={{ 
               backgroundColor: 'var(--accent)',
@@ -168,7 +168,13 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <button className="btn-primary w-full mt-4">
+              <button 
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setTimeout(() => document.getElementById('preventivo')?.scrollIntoView({ behavior: 'smooth' }), 300);
+                }}
+                className="btn-primary w-full mt-4"
+              >
                 PREVENTIVO
               </button>
             </div>

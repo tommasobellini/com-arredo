@@ -1,15 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-0 mt-0">
       <div className="absolute inset-0 z-0">
-        <img 
+        <Image 
           src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2000&auto=format&fit=crop" 
           alt="Mobili Moderni" 
-          className="w-full h-full object-cover transition-transform duration-1000 scale-105"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover transition-transform duration-1000 scale-105"
         />
         <div className="absolute inset-0 bg-black-30 backdrop-blur-slim" />
       </div>

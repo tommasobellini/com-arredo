@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const projects = [
   { title: 'Tavoli Minimalisti', category: 'Living', img: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800' },
@@ -37,10 +38,12 @@ export default function Portfolio() {
               className="group cursor-pointer"
             >
               <div className="relative aspect-card rounded-3xl overflow-hidden mb-6">
-                <img 
+                <Image 
                   src={index === 1 ? 'https://images.unsplash.com/photo-1590732158864-282c611488c0?q=80&w=1200' : project.img} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black-20 group-hover:bg-black-0 transition-colors duration-500" />
                 <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
