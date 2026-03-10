@@ -93,9 +93,9 @@ section { padding: 100px 5%; position: relative; }
 .text-white { color: #fff; }
 .text-cream { color: var(--cream); }
 .text-accent { color: var(--accent); }
-.text-gray-400 { color: #9ca3af; }
-.text-gray-500 { color: #6b7280; }
-.text-gray-600 { color: #4b5563; }
+.text-gray-400 { color: #d1d5db; } /* Schiarito per sfondi scuri */
+.text-gray-500 { color: #9ca3af; } /* Schiarito per sfondi scuri */
+.text-gray-600 { color: #374151; } /* Scurito per sfondi chiari */
 .text-xs { font-size: 0.75rem; }
 .text-sm { font-size: 0.875rem; }
 .text-lg { font-size: 1.125rem; }

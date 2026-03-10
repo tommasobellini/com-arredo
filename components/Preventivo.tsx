@@ -35,7 +35,7 @@ export default function Preventivo() {
                   <span className="text-accent text-xl font-bold">01</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm tracking-widest uppercase">Consultazione</h4>
+                  <h3 className="font-bold text-sm tracking-widest uppercase">Consultazione</h3>
                   <p className="text-xs text-gray-500">Analisi del progetto e fattibilità</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function Preventivo() {
                   <span className="text-accent text-xl font-bold">02</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm tracking-widest uppercase">Progettazione</h4>
+                  <h3 className="font-bold text-sm tracking-widest uppercase">Progettazione</h3>
                   <p className="text-xs text-gray-500">Costruzione e scelta materiali</p>
                 </div>
               </div>
@@ -62,28 +62,34 @@ export default function Preventivo() {
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-[10px] font-bold tracking-widest text-gray-400 mb-2 uppercase">Nome</label>
+                  <label htmlFor="nome" className="block text-[10px] font-bold tracking-widest text-gray-400 mb-2 uppercase">Nome</label>
                   <input 
+                    id="nome"
                     type="text" 
                     className="w-full bg-transparent border-b border-white/20 py-3 focus:outline-none focus:border-accent text-white transition-colors"
                     placeholder="Il tuo nome"
+                    aria-required="true"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold tracking-widest text-gray-400 mb-2 uppercase">Email</label>
+                  <label htmlFor="email" className="block text-[10px] font-bold tracking-widest text-gray-400 mb-2 uppercase">Email</label>
                   <input 
+                    id="email"
                     type="email" 
                     className="w-full bg-transparent border-b border-white/20 py-3 focus:outline-none focus:border-accent text-white transition-colors"
                     placeholder="La tua email"
+                    aria-required="true"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-[10px] font-bold tracking-widest text-gray-400 mb-2 uppercase">Dettagli Progetto</label>
+                <label htmlFor="dettagli" className="block text-[10px] font-bold tracking-widest text-gray-400 mb-2 uppercase">Dettagli Progetto</label>
                 <textarea 
+                  id="dettagli"
                   rows={4} 
                   className="w-full bg-transparent border-b border-white/20 py-3 focus:outline-none focus:border-accent text-white transition-colors resize-none"
                   placeholder="Descrivi brevemente cosa vorresti realizzare"
+                  aria-required="true"
                 />
               </div>
               

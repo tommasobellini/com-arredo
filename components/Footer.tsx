@@ -11,17 +11,17 @@ export default function Footer() {
               Trasformiamo l'essenza del legno in opere d'arte per la tua casa. Qualità, precisione e passione artigiana.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white-5 flex items-center justify-center hover:bg-accent transition-colors cursor-pointer text-white no-underline text-xs uppercase font-bold">
+              <a href="#" aria-label="Visita il nostro profilo Instagram" className="w-12 h-12 rounded-full bg-white-5 flex items-center justify-center hover:bg-accent transition-colors cursor-pointer text-white no-underline text-xs uppercase font-bold">
                 IG
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white-5 flex items-center justify-center hover:bg-accent transition-colors cursor-pointer text-white no-underline text-xs uppercase font-bold">
+              <a href="#" aria-label="Visita il nostro profilo Facebook" className="w-12 h-12 rounded-full bg-white-5 flex items-center justify-center hover:bg-accent transition-colors cursor-pointer text-white no-underline text-xs uppercase font-bold">
                 FB
               </a>
             </div>
           </div>
           
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-accent mb-6">CONTATTI</h4>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-accent mb-6">CONTATTI</h3>
             <ul className="space-y-4 text-gray-400 text-sm">
               <li>Via della Falegnameria, 12</li>
               <li>00100 Roma (RM), Italia</li>
@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-accent mb-6">ORARI</h4>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-accent mb-6">ORARI</h3>
             <ul className="space-y-4 text-gray-400 text-sm">
               <li>Lun - Ven: 08:30 - 18:30</li>
               <li>Sab: 09:00 - 13:00</li>

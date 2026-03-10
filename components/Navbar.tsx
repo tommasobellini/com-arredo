@@ -126,6 +126,8 @@ export default function Navbar() {
             }}
             className="lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Chiudi menu di navigazione" : "Apri menu di navigazione"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
@@ -162,7 +164,7 @@ export default function Navbar() {
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className="hover:text-accent transition-colors py-2"
+                  className="hover:text-accent transition-colors py-4 block text-gray-900 font-bold"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}

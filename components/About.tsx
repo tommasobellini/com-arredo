@@ -44,11 +44,11 @@ export default function About() {
           
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h4 className="text-3xl font-bold text-accent mb-1">40+</h4>
+              <h3 className="text-3xl font-bold text-accent mb-1">40+</h3>
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400">Anni di Esperienza</p>
             </div>
             <div>
-              <h4 className="text-3xl font-bold text-accent mb-1">100%</h4>
+              <h3 className="text-3xl font-bold text-accent mb-1">100%</h3>
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400">Handmade in Italy</p>
             </div>
           </div>

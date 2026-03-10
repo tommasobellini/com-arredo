@@ -15,7 +15,7 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover transition-transform duration-1000 scale-105"
         />
-        <div className="absolute inset-0 bg-black-30 backdrop-blur-slim" />
+        <div className="absolute inset-0 bg-black-50 backdrop-blur-slim" />
       </div>
 
       <div className="relative z-10 text-center text-white px-6 max-w-4xl">
@@ -59,14 +59,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div 
+      <button 
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-10 left-half translate-x-half animate-bounce opacity-50 cursor-pointer"
+        className="absolute bottom-10 left-half translate-x-half animate-bounce opacity-80 cursor-pointer hover:opacity-100 transition-opacity drop-shadow-lg"
+        aria-label="Scorri per scoprire di più"
       >
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
         </svg>
-      </div>
+      </button>
     </section>
   )
 }

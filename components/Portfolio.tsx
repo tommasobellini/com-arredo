@@ -48,7 +48,7 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-black-20 group-hover:bg-black-0 transition-colors duration-500" />
                 <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                    <p className="text-xs font-bold uppercase tracking-widest mb-1">{project.category}</p>
-                   <p className="text-xl font-bold">{project.title}</p>
+                   <h3 className="text-xl font-bold">{project.title}</h3>
                 </div>
               </div>
             </motion.div>
