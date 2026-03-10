@@ -1,13 +1,13 @@
 :root {
   --background: #fdfbf7;
   --foreground: #1a1a1a;
-  --accent: #8b4513;
-  --accent-light: #a0522d;
+  --accent: #7a3809;
+  --accent-light: #9c4c16;
   --cream: #fffdd0;
   --glass: rgba(255, 255, 255, 0.85);
   --glass-dark: rgba(26, 26, 26, 0.85);
-  --glass-border: rgba(139, 69, 19, 0.2);
-  --shadow: 0 10px 40px -10px rgba(139, 69, 19, 0.15);
+  --glass-border: rgba(122, 56, 9, 0.2);
+  --shadow: 0 10px 40px -10px rgba(122, 56, 9, 0.15);
   --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -36,8 +36,8 @@ section { padding: 100px 5%; position: relative; }
 /* Components */
 .premium-title { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; }
 .glass-morphism { background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); }
-.btn-primary { display: inline-block; padding: 1rem 2.5rem; background: var(--accent); color: white; font-weight: 600; border-radius: 9999px; border: none; cursor: pointer; transition: var(--transition); text-align: center; }
-.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2); }
+.btn-primary { display: inline-block; padding: 1rem 2.5rem; background: var(--accent); color: white; font-weight: 600; border-radius: 9999px; border: none; cursor: pointer; transition: var(--transition); text-align: center; min-height: 48px; min-width: 48px; }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(122, 56, 9, 0.2); }
 
 /* Utilities - Layout */
 .flex { display: flex; }
@@ -94,7 +94,7 @@ section { padding: 100px 5%; position: relative; }
 .text-cream { color: var(--cream); }
 .text-accent { color: var(--accent); }
 .text-gray-400 { color: #d1d5db; } /* Schiarito per sfondi scuri */
-.text-gray-500 { color: #9ca3af; } /* Schiarito per sfondi scuri */
+.text-gray-500 { color: #6b7280; } /* Scurito per maggiore contrasto su chiari */
 .text-gray-600 { color: #374151; } /* Scurito per sfondi chiari */
 .text-xs { font-size: 0.75rem; }
 .text-sm { font-size: 0.875rem; }
@@ -224,9 +224,32 @@ section { padding: 100px 5%; position: relative; }
 .hover\:bg-accent:hover { background: var(--accent); }
 
 /* Grid Specific */
-.grid-portfolio { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.grid-portfolio { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
+  height: auto;
+}
+@media (min-width: 768px) {
+  .grid-portfolio { 
+    flex-direction: row; 
+    height: 60vh; 
+    min-height: 500px;
+  }
+}
+.portfolio-item {
+  flex: 1;
+  transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+  position: relative;
+  border-radius: 1.5rem;
+}
+@media (min-width: 768px) {
+  .portfolio-item:hover {
+    flex: 3;
+  }
+}
 .aspect-square { aspect-ratio: 1 / 1; }
-.aspect-card { aspect-ratio: 4 / 5; }
 .object-cover { object-fit: cover; }
 
 /* Custom */

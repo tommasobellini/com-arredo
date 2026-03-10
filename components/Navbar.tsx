@@ -53,8 +53,8 @@ export default function Navbar() {
             fontSize: '1.8rem', 
             fontWeight: 900, 
             letterSpacing: '-0.05em', 
-            color: 'var(--accent)', 
-            textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+            color: scrolled || mobileMenuOpen ? '#1a1a1a' : 'var(--accent)', 
+            textShadow: scrolled || mobileMenuOpen ? 'none' : '0 2px 10px rgba(0,0,0,0.3)',
             whiteSpace: 'nowrap'
           }}>
             COM ARREDO
@@ -74,9 +74,12 @@ export default function Navbar() {
                 textTransform: 'uppercase',
                 textDecoration: 'none',
                 color: scrolled || mobileMenuOpen ? '#1a1a1a' : 'white',
+                textShadow: scrolled || mobileMenuOpen ? 'none' : '0 1px 3px rgba(0,0,0,0.5)',
                 transition: 'color 0.3s ease',
                 position: 'relative',
-                padding: '0.5rem 0',
+                padding: '1rem 0',
+                display: 'inline-block',
+                minHeight: '48px',
                 whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
@@ -124,7 +127,7 @@ export default function Navbar() {
               color: 'var(--accent)', 
               cursor: 'pointer'
             }}
-            className="lg:hidden"
+            className="lg:hidden p-2 min-w-[48px] min-h-[48px]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Chiudi menu di navigazione" : "Apri menu di navigazione"}
             aria-expanded={mobileMenuOpen}

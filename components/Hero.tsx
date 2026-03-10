@@ -1,12 +1,22 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  })
+  
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 150])
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-0 mt-0">
-      <div className="absolute inset-0 z-0">
+    <section ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden pt-0 mt-0">
+      <motion.div style={{ y: yParallax }} className="absolute inset-0 z-0">
         <Image 
           src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2000&auto=format&fit=crop" 
           alt="Mobili Moderni" 
@@ -16,7 +26,7 @@ export default function Hero() {
           className="object-cover transition-transform duration-1000 scale-105"
         />
         <div className="absolute inset-0 bg-black-50 backdrop-blur-slim" />
-      </div>
+      </motion.div>
 
       <div className="relative z-10 text-center text-white px-6 max-w-4xl">
         <motion.p 
@@ -52,7 +62,7 @@ export default function Hero() {
           </button>
           <button 
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 border border-white-30 backdrop-blur-md rounded-full font-semibold bg-white-10:hover transition-all text-white"
+            className="px-8 py-4 border border-white/50 backdrop-blur-md rounded-full font-bold bg-white/10 hover:bg-white hover:text-black transition-all text-white shadow-lg"
           >
             SCOPRI DI PIÙ
           </button>
@@ -61,7 +71,7 @@ export default function Hero() {
 
       <button 
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-10 left-half translate-x-half animate-bounce opacity-80 cursor-pointer hover:opacity-100 transition-opacity drop-shadow-lg"
+        className="absolute bottom-10 left-half translate-x-half animate-bounce opacity-80 cursor-pointer hover:opacity-100 transition-opacity drop-shadow-lg min-w-[48px] min-h-[48px] flex items-center justify-center p-2"
         aria-label="Scorri per scoprire di più"
       >
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
