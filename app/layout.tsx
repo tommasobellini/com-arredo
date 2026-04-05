@@ -1,44 +1,54 @@
 import type { Metadata, Viewport } from 'next'
+import { Fraunces, Outfit } from 'next/font/google'
 import './globals.css'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-fraunces',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-outfit',
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#1a1a1a',
+  themeColor: '#c29a75',
 }
 
+const BASE_URL = 'https://comarredo.com'
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://comarredo.it'), // URL placeholder per produzione
+  metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Com Arredo | Artigianato in Legno Premium a Roma',
-    template: '%s | Com Arredo'
+    default: 'Com-Arredo | Falegnameria Artigianale dal 1991 — Cortenuova, Bergamo',
+    template: '%s | Com-Arredo',
   },
-  description: 'Falegnameria artigianale a Roma. Realizzazione di mobili su misura, infissi, cucine e arredamenti d\'interni di lusso. L\'eccellenza del legno fatta a mano.',
-  keywords: ['falegnameria', 'arredamento su misura', 'mobili artigianali', 'infissi legno', 'roma', 'artigianato legno', 'design d\'interni'],
-  authors: [{ name: 'Com Arredo' }],
-  creator: 'Com Arredo',
-  openGraph: {
-    type: 'website',
-    locale: 'it_IT',
-    url: 'https://comarredo.it',
-    siteName: 'Com Arredo',
-    title: 'Com Arredo | Artigianato in Legno Premium',
-    description: 'Mobili su misura e arredamenti d\'interni artigianali. L\'eccellenza del legno fatta a mano.',
-    images: [
-      {
-        url: '/og-image.jpg', // Da creare in public/ in futuro
-        width: 1200,
-        height: 630,
-        alt: 'Com Arredo Portfolio',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Com Arredo | Artigianato in Legno',
-    description: 'Mobili su misura e arredamenti d\'interni artigianali.',
-    images: ['/og-image.jpg'],
-  },
+  description:
+    'Com-Arredo S.R.L. — Falegnameria artigianale dal 1991 a Cortenuova (BG). Mobili su misura, infissi in legno, cucine e arredi d\'interni di lusso realizzati a mano con essenze pregiate certificate.',
+  keywords: [
+    'falegnameria artigianale',
+    'mobili su misura',
+    'mobili legno artigianali',
+    'infissi legno su misura',
+    'cucine in legno massello',
+    'arredamento su misura Bergamo',
+    'falegname Cortenuova',
+    'falegnameria BG',
+    'legno pregiato',
+    'artigianato italiano legno',
+    'design d\'interni legno',
+    'noce massello',
+    'rovere su misura',
+    'Com-Arredo',
+  ],
+  authors: [{ name: 'Com-Arredo S.R.L.', url: BASE_URL }],
+  creator: 'Com-Arredo S.R.L.',
+  publisher: 'Com-Arredo S.R.L.',
   robots: {
     index: true,
     follow: true,
@@ -50,6 +60,38 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  openGraph: {
+    type: 'website',
+    locale: 'it_IT',
+    url: BASE_URL,
+    siteName: 'Com-Arredo',
+    title: 'Com-Arredo | Falegnameria Artigianale dal 1991',
+    description:
+      'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano a Cortenuova (BG). L\'eccellenza del legno artigianale italiano dal 1991.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Com-Arredo — Falegnameria Artigianale Italiana dal 1991',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Com-Arredo | Falegnameria Artigianale dal 1991',
+    description:
+      'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano. L\'eccellenza del legno artigianale italiano.',
+    images: ['/og-image.jpg'],
+  },
+  alternates: {
+    canonical: BASE_URL,
+    languages: {
+      'it-IT': BASE_URL,
+    },
+  },
+  category: 'Artigianato e Design d\'interni',
 }
 
 export default function RootLayout({
@@ -58,8 +100,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="it">
-      <body>{children}</body>
+    <html lang="it" className={`${fraunces.variable} ${outfit.variable}`}>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }

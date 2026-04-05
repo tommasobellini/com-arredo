@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Use nvm 22.14.0",
+      "type": "shell",
+      "command": "nvm use 22.14.0",
+      "problemMatcher": [],
+      "detail": "Use nvm 22.14.0",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start WebApp (npm run dev)",
+      "type": "shell",
+      "command": "npm run dev",
+      "problemMatcher": [],
+      "detail": "next dev --port 4000",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "dependsOn": ["Use nvm 22.14.0"]
+    }
+  ]
+}

@@ -1,83 +1,75 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { staggerContainer, fadeUp, expandWidth } from '@/lib/animations'
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null)
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  })
-  
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 150])
-
   return (
-    <section ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden pt-0 mt-0">
-      <motion.div style={{ y: yParallax }} className="absolute inset-0 z-0">
-        <Image 
-          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2000&auto=format&fit=crop" 
-          alt="Mobili Moderni" 
+    <section className="relative h-screen flex items-center overflow-hidden pt-0 mt-0 bg-antracite">
+      {/* Background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1588854337236-6889d631faa8?q=90&w=1920&auto=format&fit=crop"
+          alt="Artigianato Italiano - Falegnameria Com-Arredo"
           fill
           priority
-          sizes="100vw"
-          className="object-cover transition-transform duration-1000 scale-105"
+          className="object-cover"
+          style={{ objectPosition: 'center 30%', opacity: 0.45 }}
         />
-        <div className="absolute inset-0 bg-black-50 backdrop-blur-slim" />
-      </motion.div>
+        <div className="absolute inset-0" style={{ background: 'rgba(5,5,5,0.55)' }} />
+        <div className="absolute inset-0 bg-gradient-to-t to-transparent" />
+      </div>
 
-      <div className="relative z-10 text-center text-white px-6 max-w-4xl">
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-sm font-semibold tracking-fancy uppercase mb-4 opacity-80"
-        >
-          Artigianato Italiano dal 1980
-        </motion.p>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="premium-title text-white mb-8"
-        >
-          L'Anima del Legno, <br />
-          <span className="text-cream">Scolpita a Mano.</span>
-        </motion.h1>
-
+      <div className="container relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="max-w-4xl mx-auto"
         >
-          <button 
-            onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-primary"
+          <motion.span
+            variants={fadeUp}
+            className="text-accent text-xs text-sm-md font-bold tracking-3em uppercase block mb-6"
           >
-            ESPLORA COLLEZIONE
-          </button>
-          <button 
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 border border-white/50 backdrop-blur-md rounded-full font-bold bg-white/10 hover:bg-white hover:text-black transition-all text-white shadow-lg"
+            ARTIGIANATO ITALIANO DAL 1991
+          </motion.span>
+
+          <motion.div variants={expandWidth} style={{ originX: 0.5 }}>
+            <div className="mx-auto mb-6" style={{ height: '1px', width: '60px', background: 'var(--accent-copper)' }} />
+          </motion.div>
+
+          <motion.h1
+            variants={fadeUp}
+            className="serif text-5xl text-8xl-md mb-12 leading-tight text-white"
           >
-            SCOPRI DI PIÙ
-          </button>
+            L'Anima del <span className="text-accent">Legno.</span> <br />
+            Scolpita a Mano.
+          </motion.h1>
+
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col flex-row-md items-center justify-center gap-6"
+          >
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="btn-primary min-w-240"
+            >
+              ESPLORA COLLEZIONE
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="btn-secondary min-w-240"
+            >
+              SCOPRI DI PIÙ
+            </motion.button>
+          </motion.div>
         </motion.div>
       </div>
 
-      <button 
-        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-10 left-half translate-x-half animate-bounce opacity-80 cursor-pointer hover:opacity-100 transition-opacity drop-shadow-lg min-w-[48px] min-h-[48px] flex items-center justify-center p-2"
-        aria-label="Scorri per scoprire di più"
-      >
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-        </svg>
-      </button>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-base to-transparent z-20" />
     </section>
   )
 }

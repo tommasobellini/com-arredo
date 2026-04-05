@@ -3,189 +3,135 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/produzione', label: 'Produzione' },
+  { href: '/portfolio', label: 'Portfolio' },
+]
+
+const rightLinks = [
+  { href: '/chi-siamo', label: 'Chi Siamo' },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = [
-    { name: 'HOME', href: '#' },
-    { name: 'CHI SIAMO', href: '#about' },
-    { name: 'PORTFOLIO', href: '#portfolio' },
-    { name: 'CONTATTI', href: '#contatti' },
-  ]
-
   return (
-    <nav 
-      style={{ 
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        transition: 'all 0.5s ease',
-        padding: scrolled || mobileMenuOpen ? '1rem 0' : '1.5rem 0',
-        background: scrolled || mobileMenuOpen ? 'rgba(255, 255, 255, 0.98)' : 'linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)',
-        boxShadow: scrolled || mobileMenuOpen ? '0 10px 30px rgba(0,0,0,0.1)' : 'none'
-      }}
-    >
-      <div 
-        style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center', 
-          width: '100%', 
-          padding: '0 5%',
-          boxSizing: 'border-box'
+    <>
+      <nav
+        className="fixed top-0 left-0 right-0 z-100 transition-all"
+        style={{
+          padding: scrolled ? '14px 0' : '28px 0',
+          background: scrolled
+            ? 'rgba(8,6,4,0.88)'
+            : 'linear-gradient(to bottom, rgba(0,0,0,0.55), transparent)',
+          backdropFilter: scrolled ? 'blur(18px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(194,154,117,0.12)' : 'none',
+          transition: 'padding 0.4s ease, background 0.4s ease, border 0.4s ease',
         }}
       >
-        {/* Left: Logo */}
-        <div style={{ flex: '1 0 0%', display: 'flex', justifyContent: 'flex-start' }}>
-          <div style={{ 
-            fontSize: '1.8rem', 
-            fontWeight: 900, 
-            letterSpacing: '-0.05em', 
-            color: scrolled || mobileMenuOpen ? '#1a1a1a' : 'var(--accent)', 
-            textShadow: scrolled || mobileMenuOpen ? 'none' : '0 2px 10px rgba(0,0,0,0.3)',
-            whiteSpace: 'nowrap'
-          }}>
-            COM ARREDO
+        <div className="container flex justify-between items-center relative">
+
+          {/* Left Links */}
+          <div className="hidden md:flex items-center gap-10 flex-1">
+            {navLinks.map(({ href, label }) => (
+              <Link key={href} href={href} className="nav-link">
+                {label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Center Logo */}
+          <div className="absolute left-1-2 translate-x-1-2-neg text-center flex flex-col items-center gap-1">
+            <Link href="/" className="serif text-2xl text-3xl-md font-bold tracking-tight text-accent">
+              Com-Arredo
+            </Link>
+            <div style={{ height: '1px', width: '100%', background: 'linear-gradient(to right, transparent, rgba(194,154,117,0.6), transparent)' }} />
+          </div>
+
+          {/* Right Actions */}
+          <div className="flex items-center justify-end gap-8 flex-1">
+            {rightLinks.map(({ href, label }) => (
+              <Link key={href} href={href} className="nav-link hidden md:block">
+                {label}
+              </Link>
+            ))}
+            <Link
+              href="/contatti"
+              className="hidden md:inline-flex items-center gap-2 nav-cta"
+            >
+              Contattaci
+            </Link>
+
+            {/* Mobile Toggle */}
+            <button
+              className="md:hidden text-white"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
-        
-        {/* Center: Desktop Links */}
-        <div className="hidden lg:flex" style={{ flex: '0 1 auto', gap: '3rem', alignItems: 'center', justifyContent: 'center' }}>
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              style={{ 
-                fontSize: '11px', 
-                fontWeight: 900, 
-                letterSpacing: '0.3em', 
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                color: scrolled || mobileMenuOpen ? '#1a1a1a' : 'white',
-                textShadow: scrolled || mobileMenuOpen ? 'none' : '0 1px 3px rgba(0,0,0,0.5)',
-                transition: 'color 0.3s ease',
-                position: 'relative',
-                padding: '1rem 0',
-                display: 'inline-block',
-                minHeight: '48px',
-                whiteSpace: 'nowrap'
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = scrolled || mobileMenuOpen ? '#1a1a1a' : 'white')}
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full shadow-[0_0_15px_var(--accent)]"></span>
-            </a>
-          ))}
-        </div>
+      </nav>
 
-        {/* Right: CTA & Mobile Toggle */}
-        <div style={{ flex: '1 0 0%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '2rem' }}>
-          <button 
-            onClick={() => document.getElementById('preventivo')?.scrollIntoView({ behavior: 'smooth' })}
-            className="hidden sm:block"
-            style={{ 
-              backgroundColor: 'var(--accent)',
-              color: 'white',
-              padding: '0.8rem 2.22rem',
-              borderRadius: '9999px',
-              border: 'none',
-              fontSize: '10px',
-              fontWeight: 900,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              boxShadow: '0 10px 20px rgba(139, 69, 19, 0.4)',
-              transition: 'all 0.3s ease',
-              whiteSpace: 'nowrap'
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
-          >
-            PREVENTIVO
-          </button>
-          
-          <button 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center', 
-              background: 'none', 
-              border: 'none', 
-              color: 'var(--accent)', 
-              cursor: 'pointer'
-            }}
-            className="lg:hidden p-2 min-w-[48px] min-h-[48px]"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Chiudi menu di navigazione" : "Apri menu di navigazione"}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
-          </button>
-        </div>
-      </div>
-      
-      {/* LED Strip - Fixed refined look */}
-      <div 
-        style={{ 
-          height: '2px', 
-          width: '100%', 
-          background: 'linear-gradient(90deg, transparent, var(--accent), transparent)', 
-          backgroundSize: '200% 100%',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          boxShadow: '0 0 15px var(--accent)',
-          opacity: 0.8
-        }}
-        className="led-strip-anim"
-      ></div>
-
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white z-[60] overflow-hidden shadow-2xl"
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-90 md:hidden flex flex-col"
+            style={{ background: 'rgba(6,4,2,0.97)', backdropFilter: 'blur(20px)', top: '0', paddingTop: '100px' }}
           >
-            <div className="flex flex-col gap-6 p-8 font-bold tracking-widest text-center">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
-                  className="hover:text-accent transition-colors py-4 block text-gray-900 font-bold"
+            {/* Close */}
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="absolute top-6 right-6 text-white-60"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Logo */}
+            <div className="text-center mb-12">
+              <span className="serif text-3xl font-bold text-accent">Com-Arredo</span>
+              <div className="mx-auto mt-2" style={{ height: '1px', width: '80px', background: 'linear-gradient(to right, transparent, rgba(194,154,117,0.7), transparent)' }} />
+            </div>
+
+            <div className="flex flex-col items-center gap-8">
+              {[...navLinks, ...rightLinks].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="serif text-2xl text-white-80 hover-text-white transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.name}
-                </a>
+                  {label}
+                </Link>
               ))}
-              <button 
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setTimeout(() => document.getElementById('preventivo')?.scrollIntoView({ behavior: 'smooth' }), 300);
-                }}
-                className="btn-primary w-full mt-4"
+              <div className="h-px w-16 bg-white-10 my-2" />
+              <Link
+                href="/contatti"
+                className="btn-primary px-12"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                PREVENTIVO
-              </button>
+                Contattaci
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   )
 }
