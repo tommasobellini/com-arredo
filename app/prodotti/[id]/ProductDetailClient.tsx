@@ -10,11 +10,11 @@ export default function ProductDetailClient({ id }: { id: string }) {
   const category = data.category
 
   return (
-    <div className="min-h-screen bg-antracite text-white product-detail-page pb-24">
+    <div className="min-h-screen bg-antracite text-white product-detail-page">
       <div className="container">
 
         {/* Breadcrumb */}
-        <nav className="product-detail-breadcrumb mb-12 flex items-center gap-2 text-white-40 text-xs uppercase tracking-widest" aria-label="Breadcrumb">
+        <nav className="product-detail-breadcrumb flex items-center gap-2 text-white-40 text-xs uppercase tracking-widest" aria-label="Breadcrumb">
           <Link href="/" className="hover-text-white transition-colors">Home</Link>
           <span>/</span>
           <Link href="/portfolio" className="hover-text-white transition-colors">Portfolio</Link>
@@ -31,7 +31,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
             transition={{ duration: 0.8 }}
             className="wood-frame"
           >
-            <div className="relative overflow-hidden product-detail-image" style={{ height: '600px' }}>
+            <div className="relative overflow-hidden product-detail-image">
               <Image
                 src={data.image}
                 alt={`${data.title} — Com-Arredo falegnameria artigianale`}

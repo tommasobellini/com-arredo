@@ -1571,6 +1571,24 @@ textarea.input-field {
   }
 }
 
+/* Product detail page */
+.product-detail-page {
+  padding-top: 10rem;
+  padding-bottom: 6rem;
+}
+
+.product-detail-breadcrumb {
+  margin-bottom: 3rem;
+}
+
+.product-detail-image {
+  height: min(70vh, 600px);
+}
+
+.product-detail-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
 /* Whitespace */
 .whitespace-nowrap { white-space: nowrap; }
 .whitespace-normal { white-space: normal; }
@@ -1735,7 +1753,7 @@ section { padding: 80px 0; }
   }
 
   .product-detail-page {
-    padding-top: 6.5rem;
+    padding-top: 7.5rem;
     padding-bottom: 3rem;
   }
 
