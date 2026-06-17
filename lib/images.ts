@@ -1,6 +1,6 @@
-/** Percorsi immagini — asset locali + Unsplash temporaneo per portfolio */
-const u = (id: string, w = 1920) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&q=85&w=${w}`
+/** Percorsi immagini — asset locali + set generato per categorie e materiali */
+const cat = (name: string) => `/generated/categories/${name}.png`
+const mat = (name: string) => `/generated/materials/${name}.png`
 
 export const ogImage = '/hero.png'
 
@@ -12,20 +12,35 @@ export const images = {
   og: ogImage,
 
   portfolio: {
-    cucina: u('photo-1556911220-bff31c812dba', 800),
-    soggiorno: u('photo-1616486338812-3dadae4b4ace', 800),
-    camera: u('photo-1615529328331-f8917597711f', 800),
-    infissi: u('photo-1600585154340-be6161a56a0c', 800),
-    tavolo: u('photo-1556911220-bff31c812dba', 800),
-    dettaglio: '/detail.png',
+    cucina: cat('cucine'),
+    soggiorno: cat('soggiorni'),
+    camera: cat('camere'),
+    infissi: cat('infissi'),
+    tavolo: cat('tavoli'),
+    dettaglio: '/generated/details/incastro-macro.png',
   },
 
   produzione: {
-    cucine: u('photo-1556911220-bff31c812dba', 800),
-    infissi: u('photo-1600585154340-be6161a56a0c', 800),
-    camere: u('photo-1615529328331-f8917597711f', 800),
-    soggiorni: u('photo-1616486338812-3dadae4b4ace', 800),
-    tavoli: '/detail.png',
-    librerie: u('photo-1616486338812-3dadae4b4ace', 800),
+    cucine: cat('cucine'),
+    infissi: cat('infissi'),
+    camere: cat('camere'),
+    soggiorni: cat('soggiorni'),
+    tavoli: cat('tavoli'),
+    librerie: cat('librerie'),
+  },
+
+  materials: {
+    rovereOlio: mat('rovere-olio'),
+    rovereCerato: mat('rovere-cerato'),
+    noceOlio: mat('noce-olio'),
+    noceNaturale: mat('noce-naturale'),
+    frassinoEbano: mat('frassino-ebano'),
+    rovereSbiancato: mat('rovere-sbiancato'),
+    castagnoOlio: mat('castagno-olio'),
+    castagnoCerato: mat('castagno-cerato'),
+  },
+
+  details: {
+    incastro: '/generated/details/incastro-macro.png',
   },
 } as const

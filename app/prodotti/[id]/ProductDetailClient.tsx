@@ -32,9 +32,10 @@ export default function ProductDetailClient({ id }: { id: string }) {
             className="wood-frame"
           >
             <div className="relative overflow-hidden product-detail-image">
+              <span className="illustration-badge">Illustrazione</span>
               <Image
                 src={data.image}
-                alt={`${data.title} — Com-Arredo falegnameria artigianale`}
+                alt={`Esempio di finitura — ${data.title}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
@@ -76,7 +77,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 PREVENTIVO PERSONALIZZATO
               </Link>
               <Link href="/portfolio" className="btn-secondary">
-                ALTRI PROGETTI
+                ALTRI ESEMPI
               </Link>
             </div>
           </motion.div>

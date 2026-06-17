@@ -157,12 +157,18 @@ export default function Portfolio() {
       >
         <motion.div variants={fadeUp} className="portfolio-header flex justify-between items-center mb-16">
           <div>
+            <span className="text-accent text-10px font-bold tracking-3em uppercase block mb-3">
+              ESEMPI DI FINITURA
+            </span>
             <h2 className="serif text-4xl text-6xl-md text-white">
               Portfolio <span className="text-accent">Selezione</span>
             </h2>
             <motion.div variants={expandWidth} style={{ originX: 0 }}>
               <div className="h-px bg-accent mt-3" style={{ width: '60px' }} />
             </motion.div>
+            <p className="portfolio-disclaimer">
+              Riferimenti di stile e finitura. Ogni commessa è unica e realizzata su misura in bottega.
+            </p>
           </div>
 
           <div className="portfolio-header-actions flex gap-4 items-center">
@@ -238,28 +244,34 @@ export default function Portfolio() {
                 <div className="relative h-full w-full overflow-hidden">
                   <Image
                     src={item.img}
-                    alt={item.title}
+                    alt={`Esempio di finitura — ${item.title}`}
                     fill
                     sizes="(max-width: 768px) 72vw, 300px"
                     className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                   />
 
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 card-gradient-overlay">
+                  <div className="portfolio-card-overlay absolute inset-0 flex flex-col justify-end p-6">
                     {isActive && item.details && (
-                      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
-                        <p className="text-white-60 text-xs leading-relaxed mb-4">{item.details}</p>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="portfolio-card-details-wrap mb-4"
+                      >
+                        <p className="portfolio-card-details">{item.details}</p>
                         {item.slug ? (
-                          <Link href={`/prodotti/${item.slug}`} className="text-accent text-xs font-bold border-b border-accent pb-0-5">
+                          <Link href={`/prodotti/${item.slug}`} className="portfolio-card-link">
                             Scopri il progetto
                           </Link>
                         ) : (
-                          <Link href="/portfolio" className="text-accent text-xs font-bold border-b border-accent pb-0-5">
+                          <Link href="/portfolio" className="portfolio-card-link">
                             Vedi portfolio
                           </Link>
                         )}
                       </motion.div>
                     )}
-                    <h3 className="serif text-lg text-white group-hover:text-accent transition-colors">{item.title}</h3>
+                    <h3 className="serif text-lg portfolio-card-title group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h3>
                   </div>
 
                   {isActive && <div className="absolute top-50pct right-0 w-12 h-px bg-accent shadow-copper-glow" />}

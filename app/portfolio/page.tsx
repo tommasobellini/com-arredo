@@ -12,10 +12,10 @@ import { productsData, productSlugs } from '@/app/prodotti/[id]/data'
 export const metadata: Metadata = createPageMetadata({
   title: 'Portfolio',
   description:
-    'Progetti realizzati da Com-Arredo: cucine, soggiorni, camere e infissi in legno su misura. Falegnameria artigianale Bergamo.',
+    'Esempi di finitura e ispirazioni su misura da Com-Arredo: cucine, soggiorni, camere e infissi in legno. Falegnameria artigianale Bergamo.',
   path: '/portfolio',
   image: images.portfolio.soggiorno,
-  imageAlt: 'Soggiorno su misura Com-Arredo — portfolio falegnameria',
+  imageAlt: 'Esempio di finitura soggiorno su misura — Com-Arredo falegnameria',
 })
 
 export default function PortfolioPage() {
@@ -29,15 +29,19 @@ export default function PortfolioPage() {
       />
       <Navbar />
       <PageHero
-        eyebrow="I NOSTRI LAVORI"
+        eyebrow="ESEMPI DI FINITURA"
         title="Portfolio"
         highlight="Selezione"
-        subtitle="Ogni progetto racconta la nostra bottega: materiali nobili, giunzioni a mano e finiture che rispettano il legno."
+        subtitle="Riferimenti di stile e finitura per cucine, soggiorni, camere e infissi. Ogni commessa è unica e realizzata su misura in bottega."
         image={images.portfolio.soggiorno}
       />
 
       <section className="py-24 bg-granite">
         <div className="container">
+          <p className="portfolio-disclaimer mb-8">
+            Le immagini sono riferimenti di finitura e stile. Ogni commessa è unica e realizzata su
+            misura in bottega.
+          </p>
           <div className="portfolio-grid">
             {productSlugs.map((slug) => {
               const item = productsData[slug]
@@ -46,14 +50,15 @@ export default function PortfolioPage() {
                   <div className="relative aspect-4-3 overflow-hidden">
                     <Image
                       src={item.image}
-                      alt={item.title}
+                      alt={`Esempio di finitura — ${item.title}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover opacity-85 group-hover:opacity-100 transition-opacity"
                     />
                     <div className="portfolio-grid-overlay">
-                      <span className="text-accent text-10px font-bold tracking-widest uppercase">{item.category}</span>
-                      <h2 className="serif text-xl text-white mt-2 group-hover:text-accent transition-colors">{item.title}</h2>
+                      <span className="portfolio-grid-category">{item.category}</span>
+                      <h2 className="serif text-xl portfolio-card-title mt-2">{item.title}</h2>
+                      <p className="portfolio-grid-description">{item.description}</p>
                     </div>
                   </div>
                 </Link>

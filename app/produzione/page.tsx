@@ -72,6 +72,11 @@ export default function ProduzionePage() {
               </article>
             ))}
           </div>
+          <div className="section-cta-block section-cta-block--center mt-12">
+            <Link href="/materiali" className="text-accent text-xs font-bold tracking-widest uppercase">
+              Esplora materiali e finiture →
+            </Link>
+          </div>
         </div>
       </section>
 

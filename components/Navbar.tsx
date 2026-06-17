@@ -10,6 +10,7 @@ import ThemeToggle from '@/components/ThemeToggle'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/produzione', label: 'Produzione' },
+  { href: '/materiali', label: 'Materiali' },
   { href: '/portfolio', label: 'Portfolio' },
 ]
 
@@ -86,16 +87,7 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
             className="mobile-menu-overlay md:hidden"
           >
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="mobile-menu-close"
-              aria-label="Chiudi menu"
-            >
-              <X size={24} />
-            </button>
             <div className="mobile-menu-content">
-              <BrandLogo variant="full" className="brand-logo brand-logo--menu" />
               <nav className="mobile-menu-nav" aria-label="Menu mobile">
                 {mobileLinks.map(({ href, label }) => (
                   <Link

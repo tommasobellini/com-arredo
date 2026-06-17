@@ -8,6 +8,7 @@ import { site } from '@/lib/site'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/produzione', label: 'Produzione' },
+  { href: '/materiali', label: 'Materiali' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/chi-siamo', label: 'Chi siamo' },
   { href: '/contatti', label: 'Contatti' },
