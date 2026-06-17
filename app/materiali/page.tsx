@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import SectionDivider from '@/components/SectionDivider'
 import MaterialExplorer from '@/components/MaterialExplorer'
 import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
@@ -33,21 +34,24 @@ export default function MaterialiPage() {
         highlight="su misura"
         subtitle="Rovere, noce, frassino e castagno: ogni essenza racconta una storia. Scegli la finitura che valorizza il tuo progetto — in bottega ti mostriamo i campioni reali."
         image={images.materials.noceOlio}
+        dividerTo="surface"
       />
 
       <MaterialExplorer />
 
-      <section className="py-16 bg-antracite border-t border-white-5">
-        <div className="container section-cta-block section-cta-block--center">
+      <SectionDivider from="surface" to="elevated" />
+
+      <section className="py-16 bg-antracite">
+        <div className="container text-center">
           <p className="text-white-60 text-sm max-w-lg mx-auto">
             Ogni commessa è unica e realizzata su misura in bottega a Cortenuova. Raccontaci il
             tuo progetto e ricevi una valutazione senza impegno.
           </p>
-          <div className="section-actions">
+          <div className="section-actions section-actions--center">
             <Link href="/contatti" className="btn-primary">
               Richiedi consulenza
             </Link>
-            <Link href="/produzione" className="footer-cta-secondary">
+            <Link href="/produzione" className="btn-secondary">
               I nostri servizi
             </Link>
           </div>

@@ -35,7 +35,7 @@ export default function TerminiPage() {
           Per ogni controversia è competente il foro di Bergamo. Legge italiana applicabile.
         </p>
       </LegalContent>
-      <Footer />
+      <Footer dividerFrom="base" />
     </>
   )
 }

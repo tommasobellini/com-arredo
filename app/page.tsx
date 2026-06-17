@@ -5,6 +5,7 @@ import Portfolio from '@/components/Portfolio'
 import About from '@/components/About'
 import Preventivo from '@/components/Preventivo'
 import Footer from '@/components/Footer'
+import SectionDivider from '@/components/SectionDivider'
 import JsonLd from '@/components/JsonLd'
 import { createPageMetadata, jsonLdHomeGraph } from '@/lib/seo'
 import { ogImage } from '@/lib/images'
@@ -27,8 +28,11 @@ export default function Home() {
       <main>
         <Navbar />
         <Hero />
+        <SectionDivider from="elevated" to="base" />
         <About />
+        <SectionDivider from="base" to="surface" />
         <Portfolio />
+        <SectionDivider from="surface" to="elevated" />
         <Preventivo />
         <Footer />
       </main>

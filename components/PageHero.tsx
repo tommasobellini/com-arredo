@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import SectionDivider, { type SectionTone } from '@/components/SectionDivider'
 
 interface PageHeroProps {
   eyebrow: string
@@ -9,6 +10,8 @@ interface PageHeroProps {
   highlight?: string
   subtitle?: string
   image?: string
+  /** Transizione verso la sezione sotto l'hero */
+  dividerTo?: SectionTone
 }
 
 export default function PageHero({
@@ -17,8 +20,10 @@ export default function PageHero({
   highlight,
   subtitle,
   image = '/detail.png',
+  dividerTo,
 }: PageHeroProps) {
   return (
+    <>
     <section className="relative page-hero-section pt-40 pb-24 overflow-hidden bg-antracite">
       <motion.div
         initial={{ opacity: 0 }}
@@ -60,5 +65,7 @@ export default function PageHero({
         )}
       </motion.div>
     </section>
+    {dividerTo && <SectionDivider from="elevated" to={dividerTo} />}
+    </>
   )
 }

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import SectionDivider from '@/components/SectionDivider'
 import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
 import { site } from '@/lib/site'
@@ -40,6 +41,7 @@ export default function ChiSiamoPage() {
         highlight="Siamo"
         subtitle="Com-Arredo è falegnameria artigianale: trasformiamo il legno in arredi che accompagnano le famiglie per generazioni."
         image={images.about}
+        dividerTo="elevated"
       />
 
       <section className="py-24 bg-antracite">
@@ -75,6 +77,8 @@ export default function ChiSiamoPage() {
         </div>
       </section>
 
+      <SectionDivider from="elevated" to="surface" />
+
       <section className="py-24 bg-granite">
         <div className="container">
           <h2 className="serif text-3xl text-white text-center mb-16">I nostri valori</h2>
@@ -89,7 +93,7 @@ export default function ChiSiamoPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer dividerFrom="surface" />
     </main>
   )
 }

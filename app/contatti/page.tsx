@@ -28,6 +28,7 @@ export default function ContattiPage() {
         title="Contatti"
         subtitle="Compila il modulo o scrivici: ti rispondiamo entro 24 ore lavorative con una prima valutazione senza impegno."
         image={images.woodGrain}
+        dividerTo="elevated"
       />
 
       <section className="py-24 bg-antracite">

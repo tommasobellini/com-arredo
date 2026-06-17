@@ -57,6 +57,17 @@ function getCardOpacity(distance: number, viewportWidth: number) {
   return distance > maxVisible ? 0 : 1
 }
 
+function getCircularOffset(itemIndex: number, activeIndex: number, total: number) {
+  let offset = itemIndex - activeIndex
+  if (offset > total / 2) offset -= total
+  if (offset < -total / 2) offset += total
+  return offset
+}
+
+function getCircularDistance(itemIndex: number, activeIndex: number, total: number) {
+  return Math.abs(getCircularOffset(itemIndex, activeIndex, total))
+}
+
 export default function Portfolio() {
   const [index, setIndex] = useState(2)
   const [metrics, setMetrics] = useState(() => getCarouselMetrics(1280))
@@ -104,8 +115,10 @@ export default function Portfolio() {
   const centerY = -cardHeight / 2
   const carouselHeight = Math.round(cardHeight * 1.15 + 48)
 
-  const next = () => setIndex((prev) => (prev + 1) % portfolioItems.length)
-  const prev = () => setIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length)
+  const itemCount = portfolioItems.length
+
+  const next = () => setIndex((prev) => (prev + 1) % itemCount)
+  const prev = () => setIndex((prev) => (prev - 1 + itemCount) % itemCount)
 
   const SWIPE_THRESHOLD = 48
 
@@ -145,7 +158,6 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="bg-granite py-32 overflow-hidden relative">
-      <div className="absolute top-0 left-0 right-0 pointer-events-none z-10 section-fade-top" />
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10 section-fade-bottom" />
 
       <motion.div
@@ -207,8 +219,9 @@ export default function Portfolio() {
         >
           {portfolioItems.map((item, i) => {
             const isActive = i === index
-            const slideOffset = (i - index) * cardSpacing
-            const distance = Math.abs(i - index)
+            const circularOffset = getCircularOffset(i, index, itemCount)
+            const slideOffset = circularOffset * cardSpacing
+            const distance = getCircularDistance(i, index, itemCount)
             const targetX = centerX + slideOffset
             const targetY = centerY
             const targetScale = isActive ? 1.05 : 0.88
@@ -219,7 +232,7 @@ export default function Portfolio() {
               <motion.div
                 key={item.title}
                 animate={{
-                  x: carouselInView ? targetX : targetX + (i - index) * 28,
+                  x: carouselInView ? targetX : targetX + circularOffset * 28,
                   y: carouselInView ? targetY : targetY + 72,
                   scale: carouselInView ? targetScale : 0.78,
                   opacity: carouselInView ? targetOpacity : 0,

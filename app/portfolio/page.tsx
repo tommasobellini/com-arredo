@@ -34,6 +34,7 @@ export default function PortfolioPage() {
         highlight="Selezione"
         subtitle="Riferimenti di stile e finitura per cucine, soggiorni, camere e infissi. Ogni commessa è unica e realizzata su misura in bottega."
         image={images.portfolio.soggiorno}
+        dividerTo="surface"
       />
 
       <section className="py-24 bg-granite">
@@ -78,7 +79,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer dividerFrom="surface" />
     </main>
   )
 }

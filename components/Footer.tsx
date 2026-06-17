@@ -3,6 +3,7 @@
 import { MapPin, Mail, Phone } from 'lucide-react'
 import Link from 'next/link'
 import BrandLogo from '@/components/BrandLogo'
+import SectionDivider, { type SectionTone } from '@/components/SectionDivider'
 import { site } from '@/lib/site'
 
 const navLinks = [
@@ -20,10 +21,12 @@ const legalLinks = [
   { href: '/termini', label: 'Termini' },
 ]
 
-export default function Footer() {
+export default function Footer({ dividerFrom = 'elevated' }: { dividerFrom?: SectionTone }) {
   const year = new Date().getFullYear()
 
   return (
+    <>
+      <SectionDivider from={dividerFrom} to="footer" />
     <footer className="site-footer">
       <div className="container footer-shell">
         <div className="footer-grid">
@@ -115,5 +118,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   )
 }

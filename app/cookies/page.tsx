@@ -31,7 +31,7 @@ export default function CookiesPage() {
           potrebbe limitare alcune funzionalità del sito.
         </p>
       </LegalContent>
-      <Footer />
+      <Footer dividerFrom="base" />
     </>
   )
 }

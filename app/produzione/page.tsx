@@ -8,6 +8,7 @@ import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
 import { services } from '@/lib/site'
 import ProcessSection from '@/components/ProcessSection'
+import SectionDivider from '@/components/SectionDivider'
 import { createPageMetadata, jsonLdBreadcrumb } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
@@ -35,6 +36,7 @@ export default function ProduzionePage() {
         highlight="Artigianale"
         subtitle="Ogni commessa nasce in bottega: progettazione, lavorazione e posa seguono standard di eccellenza italiana."
         image={images.workshop}
+        dividerTo="elevated"
       />
 
       <section className="py-24 bg-antracite">
@@ -80,9 +82,11 @@ export default function ProduzionePage() {
         </div>
       </section>
 
+      <SectionDivider from="elevated" to="surface" />
+
       <ProcessSection />
 
-      <Footer />
+      <Footer dividerFrom="surface" />
     </main>
   )
 }

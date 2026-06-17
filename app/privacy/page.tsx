@@ -42,7 +42,7 @@ export default function PrivacyPage() {
           <a href={`mailto:${site.email}`} className="text-accent">{site.email}</a>.
         </p>
       </LegalContent>
-      <Footer />
+      <Footer dividerFrom="base" />
     </>
   )
 }
