@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { images } from '@/lib/images'
 import { staggerContainer, fadeUp, fadeLeft, fadeRight, expandWidth, viewportOptions } from '@/lib/animations'
 
 export default function About() {
@@ -10,21 +11,19 @@ export default function About() {
     <section id="about" className="relative py-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=85&w=1920&auto=format&fit=crop"
-          alt="Bottega artigiana Com-Arredo"
+          src={images.about}
+          alt="Artigiano al lavoro in bottega — Com-Arredo"
           fill
           className="object-cover"
-          style={{ opacity: 0.35, objectPosition: 'center 60%' }}
+          style={{ opacity: 0.4, objectPosition: 'center 50%' }}
         />
-        <div className="absolute inset-0" style={{ background: 'rgba(8,6,4,0.72)' }} />
-        <div className="absolute top-0 left-0 right-0" style={{ height: '180px', background: 'linear-gradient(to bottom, #0a0a0a, transparent)' }} />
-        <div className="absolute bottom-0 left-0 right-0" style={{ height: '180px', background: 'linear-gradient(to top, #0e0d0b, transparent)' }} />
+        <motion.div className="absolute inset-0 about-overlay" />
+        <div className="absolute top-0 left-0 right-0 section-fade-top-sm" />
+        <motion.div className="absolute bottom-0 left-0 right-0 section-fade-bottom-sm" />
       </div>
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 grid-cols-2-md gap-12 gap-24-md items-center">
-
-          {/* Colonna sinistra — sequenza: badge → linea → titolo */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -35,9 +34,9 @@ export default function About() {
               LA NOSTRA ESSENZA
             </motion.span>
 
-            <motion.h2 variants={fadeLeft} className="serif text-5xl text-7xl-md text-white leading-tight mb-8">
+            <motion.h2 variants={fadeLeft} className="serif text-3xl text-7xl-md text-white leading-tight mb-8">
               Tradizione e <br />
-              <span className="text-accent" style={{ borderBottom: '2px solid rgba(194,154,117,0.35)', paddingBottom: '4px' }}>Eccellenza</span> <br />
+              <span className="text-accent accent-underline">Eccellenza</span> <br />
               Artigiana.
             </motion.h2>
 
@@ -46,7 +45,6 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* Colonna destra — sequenza: citazione → paragrafi → CTA */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -56,12 +54,12 @@ export default function About() {
           >
             <div className="space-y-6">
               <motion.p variants={fadeRight} className="text-white-80 text-xl leading-relaxed serif italic">
-                "Trasformiamo il legno in opere che durano generazioni."
+                &ldquo;Trasformiamo il legno in opere che durano generazioni.&rdquo;
               </motion.p>
               <motion.p variants={fadeUp} className="text-white-60 text-lg leading-relaxed">
-                Dal 1991, Com-Arredo è il punto di riferimento per chi cerca l'unicità
+                Dal 1991, Com-Arredo è il punto di riferimento per chi cerca l&apos;unicità
                 del fatto a mano. Ogni pezzo nasce da un dialogo tra la materia prima
-                e la visione del cliente, portando l'arte falegnamistica italiana
+                e la visione del cliente, portando l&apos;arte falegnamistica italiana
                 nei contesti del design contemporaneo.
               </motion.p>
               <motion.p variants={fadeUp} className="text-white-60 text-lg leading-relaxed">
@@ -71,7 +69,7 @@ export default function About() {
               </motion.p>
             </div>
 
-            <motion.div variants={fadeUp} className="flex items-center gap-6">
+            <motion.div variants={fadeUp} className="section-actions">
               <Link href="/chi-siamo" className="btn-primary">
                 Scopri la nostra storia
               </Link>
@@ -83,7 +81,6 @@ export default function About() {
               </Link>
             </motion.div>
           </motion.div>
-
         </div>
       </div>
     </section>

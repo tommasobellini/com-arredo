@@ -1,0 +1,146 @@
+[
+  {
+    "route": "/",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/produzione",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/portfolio",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/chi-siamo",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/contatti",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/privacy",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/cookies",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/termini",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/prodotti/cucina-artigianale",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/prodotti/soggiorno-su-misura",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/prodotti/camera-da-letto-premium",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  },
+  {
+    "route": "/prodotti/infissi-su-misura",
+    "url": "http://localhost:4000/maintenance",
+    "title": "Sito in Manutenzione | Com-Arredo | Com-Arredo",
+    "status": 200,
+    "issues": [
+      {
+        "type": "redirect",
+        "msg": "Redirect a manutenzione"
+      }
+    ]
+  }
+]

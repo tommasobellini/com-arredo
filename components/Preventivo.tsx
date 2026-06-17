@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { staggerContainer, fadeUp, fadeLeft, fadeRight, viewportOptions } from '@/lib/animations'
+import PreventivoForm from '@/components/PreventivoForm'
+import { staggerContainer, fadeUp, fadeLeft, viewportOptions } from '@/lib/animations'
 
 export default function Preventivo() {
   return (
@@ -12,15 +13,13 @@ export default function Preventivo() {
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-
-          {/* Testo — sequenza: titolo → corpo → link */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
             viewport={viewportOptions}
           >
-            <motion.h2 variants={fadeLeft} className="serif text-5xl text-7xl-md text-white mb-8 leading-tight">
+            <motion.h2 variants={fadeLeft} className="serif text-4xl text-7xl-md text-white mb-8 leading-tight">
               Richiedi un <br />
               <span className="text-accent">Preventivo.</span>
             </motion.h2>
@@ -30,47 +29,13 @@ export default function Preventivo() {
               valutazione personalizzata e senza impegno.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link
-                href="#preventivo"
-                className="inline-block text-accent font-semibold border-b border-accent pb-1 hover-opacity-80 transition-all"
-              >
-                Richiedi un Preventivo
+              <Link href="/contatti" className="inline-block text-accent font-semibold border-b border-accent pb-1 hover-opacity-80 transition-all">
+                Pagina contatti completa
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* Form — sequenza: riga 1 → riga 2 → textarea → bottone */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOptions}
-            className="w-full"
-          >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <motion.div variants={fadeRight} className="grid grid-cols-2-md gap-6">
-                <input type="text" placeholder="Nome" className="input-field" />
-                <input type="text" placeholder="Cognome" className="input-field" />
-              </motion.div>
-              <motion.div variants={fadeRight} className="grid grid-cols-2-md gap-6">
-                <input type="email" placeholder="Email" className="input-field" />
-                <input type="tel" placeholder="Telefono" className="input-field" />
-              </motion.div>
-              <motion.div variants={fadeUp}>
-                <textarea placeholder="Lascia un messaggio..." rows={5} className="input-field" />
-              </motion.div>
-              <motion.div variants={fadeUp}>
-                <button
-                  type="submit"
-                  className="btn-primary w-full"
-                  style={{ boxShadow: '0 10px 40px rgba(194,154,117,0.2)' }}
-                >
-                  INVIA RICHIESTA
-                </button>
-              </motion.div>
-            </form>
-          </motion.div>
-
+          <PreventivoForm />
         </div>
       </div>
     </section>

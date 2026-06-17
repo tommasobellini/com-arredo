@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import ProductDetailClient from './ProductDetailClient'
 import { productsData, productSlugs } from './data'
 
@@ -83,6 +84,7 @@ export default async function ProductDetailPage({ params }: Props) {
       />
       <Navbar />
       <ProductDetailClient id={id} />
+      <Footer />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Fraunces, Outfit } from 'next/font/google'
+import ThemeProvider from '@/components/ThemeProvider'
 import './globals.css'
 
 const fraunces = Fraunces({
@@ -17,7 +18,7 @@ const outfit = Outfit({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#c29a75',
+  themeColor: '#348059',
 }
 
 const BASE_URL = 'https://comarredo.com'
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
       'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano a Cortenuova (BG). L\'eccellenza del legno artigianale italiano dal 1991.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/hero.png',
         width: 1200,
         height: 630,
         alt: 'Com-Arredo — Falegnameria Artigianale Italiana dal 1991',
@@ -83,7 +84,7 @@ export const metadata: Metadata = {
     title: 'Com-Arredo | Falegnameria Artigianale dal 1991',
     description:
       'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano. L\'eccellenza del legno artigianale italiano.',
-    images: ['/og-image.jpg'],
+    images: ['/hero.png'],
   },
   alternates: {
     canonical: BASE_URL,
@@ -100,8 +101,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="it" className={`${fraunces.variable} ${outfit.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html lang="it" className={`${fraunces.variable} ${outfit.variable}`} suppressHydrationWarning data-theme="dark">
+      <body className="antialiased">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

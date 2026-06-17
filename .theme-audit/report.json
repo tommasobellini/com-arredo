@@ -1,0 +1,56 @@
+[
+  {
+    "theme": "dark",
+    "viewport": 390,
+    "bg": "rgb(0, 0, 0)",
+    "accent": "#348059",
+    "logoSrc": "/logo/COMARREDO-BIANCO.svg",
+    "logoVisible": true,
+    "pass": true
+  },
+  {
+    "theme": "dark",
+    "viewport": 1440,
+    "bg": "rgb(0, 0, 0)",
+    "accent": "#348059",
+    "logoSrc": "/logo/COMARREDO-BIANCO.svg",
+    "logoVisible": true,
+    "pass": true
+  },
+  {
+    "theme": "light",
+    "viewport": 390,
+    "bg": "rgb(255, 255, 255)",
+    "accent": "#348059",
+    "logoSrc": "/logo/COMARREDO-PRIMARY.svg",
+    "logoVisible": true,
+    "pass": true
+  },
+  {
+    "theme": "light",
+    "viewport": 1440,
+    "bg": "rgb(255, 255, 255)",
+    "accent": "#348059",
+    "logoSrc": "/logo/COMARREDO-PRIMARY.svg",
+    "logoVisible": true,
+    "pass": true
+  },
+  {
+    "theme": "forest",
+    "viewport": 390,
+    "bg": "rgb(26, 46, 36)",
+    "accent": "#5ca87a",
+    "logoSrc": "/logo/COMARREDO-BIANCO.svg",
+    "logoVisible": true,
+    "pass": true
+  },
+  {
+    "theme": "forest",
+    "viewport": 1440,
+    "bg": "rgb(26, 46, 36)",
+    "accent": "#5ca87a",
+    "logoSrc": "/logo/COMARREDO-BIANCO.svg",
+    "logoVisible": true,
+    "pass": true
+  }
+]

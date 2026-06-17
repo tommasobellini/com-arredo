@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Lock, Construction, Mail, MapPin, X } from 'lucide-react'
+import Image from 'next/image'
+import BrandLogo from '@/components/BrandLogo'
+import ThemeToggle from '@/components/ThemeToggle'
 import { loginToMaintenance } from './actions'
 
 export default function MaintenancePage() {
@@ -31,13 +34,22 @@ export default function MaintenancePage() {
   }
 
   return (
-    <div className="min-h-screen bg-antracite text-white flex flex-col items-center justify-center relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-antracite text-white flex flex-col relative overflow-hidden font-sans">
+      <header className="maintenance-header">
+        <div className="container maintenance-header-inner">
+          <ThemeToggle className="theme-toggle--navbar" />
+        </div>
+      </header>
+
+      <div className="flex flex-1 flex-col items-center justify-center">
       {/* Background with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/portfolio-1.png" 
-          alt="Artigianato" 
-          className="w-full h-full object-cover opacity-10 grayscale"
+        <Image
+          src="/hero.png"
+          alt="Artigianato"
+          fill
+          priority
+          className="object-cover opacity-10 grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-antracite-90 via-antracite-85 to-antracite" />
       </div>
@@ -48,18 +60,18 @@ export default function MaintenancePage() {
         transition={{ duration: 1 }}
         className="z-10 text-center px-6 max-w-4xl flex flex-col items-center py-20"
       >
-        <span className="text-accent text-10px font-bold tracking-3em uppercase block mb-6">
+        <span className="text-accent text-10px font-bold tracking-widest md:tracking-3em uppercase block mb-6">
           ECCELLENZA DAL 1991
         </span>
 
-        <div className="mb-10 flex items-center gap-2 bg-white-5 border border-white-10 px-4 py-2 rounded-full">
+        <div className="mb-10 flex items-center gap-2 bg-white-5 border border-white-10 px-6 md:px-4 py-2 rounded-full">
           <Construction size={14} className="text-accent" />
-          <span className="uppercase text-9px font-bold tracking-widest text-accent">Lavori in corso</span>
+          <span className="uppercase text-14px font-bold tracking-widest text-accent">Lavori in corso</span>
         </div>
 
-        <h1 className="serif text-5xl mb-4 text-white leading-tight">
-          COM-ARREDO <span className="text-accent">S.R.L.</span>
-        </h1>
+        <div className="mb-4">
+          <BrandLogo variant="full" className="brand-logo brand-logo--maintenance" priority />
+        </div>
         
         <p className="text-lg md:text-xl text-white-50 font-light mb-16 leading-relaxed max-w-2xl italic serif">
           "La tua casa su misura"
@@ -81,15 +93,15 @@ export default function MaintenancePage() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap justify-center gap-6">
-          <a href="mailto:info@comarredo.com" className="btn-primary min-w-240">
+        <div className="section-actions section-actions--center section-actions--stack-md-row w-full md:w-auto" style={{ marginTop: '4rem' }}>
+          <a href="mailto:info@comarredo.com" className="btn-primary w-full md:min-w-240">
             Richiedi un Preventivo
           </a>
           <a 
             href="https://maps.google.com/?q=VIA+GIOSUE+CARDUCCI+28+24050+CORTENUOVA+BG" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="btn-secondary min-w-240"
+            className="btn-secondary w-full md:min-w-240"
           >
             Trova la Sede
           </a>
@@ -103,12 +115,12 @@ export default function MaintenancePage() {
             <motion.button
               key="lock-btn"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.2 }}
+              animate={{ opacity: 0.6 }}
               whileHover={{ opacity: 1 }}
               onClick={() => setShowLogin(true)}
-              className="p-3 text-white-20 hover-text-white transition-all"
+              className="p-3 rounded-full transition-all"
             >
-              <Lock size={12} />
+              <Lock size={24} color='brown' className='text-white drop-shadow-sm'/>
             </motion.button>
           ) : (
             <motion.div
@@ -129,7 +141,7 @@ export default function MaintenancePage() {
                     <h3 className="serif text-2xl text-white">Accesso</h3>
                     <p className="text-10px uppercase tracking-widest text-accent font-bold">Gestione Piattaforma</p>
                   </div>
-                  <button onClick={() => setShowLogin(false)} className="text-white-40 hover-text-white"><X size={20} /></button>
+                  <button onClick={() => setShowLogin(false)} className="bg-black  hover-text-white"><X size={20} /></button>
                 </div>
                 
                 <form onSubmit={handleLogin} className="space-y-4">
@@ -155,8 +167,9 @@ export default function MaintenancePage() {
           )}
         </AnimatePresence>
       </div>
+      </div>
 
-      <footer className="fixed bottom-8 left-1-2 translate-x-1-2-neg text-white-20 text-9px uppercase tracking-4em">
+      <footer className="absolute bottom-8 left-1-2 translate-x-1-2-neg text-white-20 text-9px uppercase tracking-widest md:tracking-4em text-center w-full px-6">
         COM-ARREDO S.R.L. &bull; P.IVA 02113340166 &bull; ARTIGIANATO ITALIANO
       </footer>
     </div>

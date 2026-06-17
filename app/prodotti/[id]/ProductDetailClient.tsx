@@ -7,14 +7,14 @@ import { productsData, ProductData } from './data'
 
 export default function ProductDetailClient({ id }: { id: string }) {
   const data: ProductData = productsData[id] || productsData['cucina-artigianale']
-  const type = id.split('-')[0].charAt(0).toUpperCase() + id.split('-')[0].slice(1)
+  const category = data.category
 
   return (
-    <div className="min-h-screen bg-antracite text-white pt-40 pb-24">
+    <div className="min-h-screen bg-antracite text-white product-detail-page pb-24">
       <div className="container">
 
         {/* Breadcrumb */}
-        <nav className="mb-12 flex items-center gap-2 text-white-40 text-xs uppercase tracking-widest" aria-label="Breadcrumb">
+        <nav className="product-detail-breadcrumb mb-12 flex items-center gap-2 text-white-40 text-xs uppercase tracking-widest" aria-label="Breadcrumb">
           <Link href="/" className="hover-text-white transition-colors">Home</Link>
           <span>/</span>
           <Link href="/portfolio" className="hover-text-white transition-colors">Portfolio</Link>
@@ -31,7 +31,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
             transition={{ duration: 0.8 }}
             className="wood-frame"
           >
-            <div className="relative overflow-hidden" style={{ height: '600px' }}>
+            <div className="relative overflow-hidden product-detail-image" style={{ height: '600px' }}>
               <Image
                 src={data.image}
                 alt={`${data.title} — Com-Arredo falegnameria artigianale`}
@@ -52,19 +52,17 @@ export default function ProductDetailClient({ id }: { id: string }) {
               <span className="text-accent text-10px font-bold tracking-3em uppercase block mb-4">
                 PRODUZIONE ARTIGIANALE
               </span>
-              <h1 className="serif text-5xl leading-tight mb-2">
+              <h1 className="serif product-detail-title text-5xl leading-tight mb-2">
                 {data.title}
               </h1>
-              {type && (
-                <span className="block text-xl text-accent mt-2 italic serif opacity-70">/ {type}</span>
-              )}
+              <span className="block text-xl text-accent mt-2 italic serif opacity-70">/ {category}</span>
             </div>
 
             <p className="text-white-60 text-lg leading-relaxed mb-12 max-w-xl">
               {data.description}
             </p>
 
-            <div className="grid grid-cols-1 grid-cols-2-md gap-x-8 gap-y-6 mb-12">
+            <div className="grid grid-cols-1 grid-cols-2-md gap-x-8 gap-y-6 mb-4">
               {data.features.map((feature: string) => (
                 <div key={feature} className="flex items-center gap-4 border-l border-accent-30 pl-4 py-1">
                   <span className="font-bold text-10px tracking-widest uppercase text-white-80">{feature}</span>
@@ -72,13 +70,13 @@ export default function ProductDetailClient({ id }: { id: string }) {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-6">
-              <Link href="/#preventivo" className="btn-primary min-w-240">
+            <div className="section-actions">
+              <Link href="/contatti" className="btn-primary w-full md:min-w-240">
                 PREVENTIVO PERSONALIZZATO
               </Link>
-              <button className="btn-secondary">
-                DATI TECNICI
-              </button>
+              <Link href="/portfolio" className="btn-secondary">
+                ALTRI PROGETTI
+              </Link>
             </div>
           </motion.div>
 

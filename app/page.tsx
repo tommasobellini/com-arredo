@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Com-Arredo | Falegnameria Artigianale dal 1991',
     description:
-      'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano. Dal 1980 l\'eccellenza dell\'artigianato italiano del legno.',
+      'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano. Dal 1991 l\'eccellenza dell\'artigianato italiano del legno.',
     url: 'https://comarredo.com',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/hero.png', width: 1200, height: 630 }],
   },
 }
 
@@ -36,8 +36,8 @@ const jsonLd = {
       email: 'info@comarredo.com',
       foundingDate: '1991',
       priceRange: '€€€',
-      image: 'https://comarredo.com/og-image.jpg',
-      logo: 'https://comarredo.com/og-image.jpg',
+      image: 'https://comarredo.com/hero.png',
+      logo: 'https://comarredo.com/hero.png',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Via Carducci 28',

@@ -1,0 +1,174 @@
+[
+  {
+    "viewport": 390,
+    "carousel": {
+      "offset": 0,
+      "cardCenter": 195,
+      "viewportCenter": 195,
+      "cardWidth": 295,
+      "viewportWidth": 390,
+      "pass": true
+    },
+    "logos": {
+      "count": 5,
+      "items": [
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 400,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        },
+        {
+          "alt": "Bottega artigiana Com-Arredo — falegnameria su misura",
+          "naturalWidth": 390,
+          "visible": true
+        },
+        {
+          "alt": "Artigiano al lavoro in bottega — Com-Arredo",
+          "naturalWidth": 390,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        }
+      ],
+      "pass": true
+    },
+    "pass": true
+  },
+  {
+    "viewport": 768,
+    "carousel": {
+      "offset": 0,
+      "cardCenter": 384,
+      "viewportCenter": 384,
+      "cardWidth": 315,
+      "viewportWidth": 768,
+      "pass": true
+    },
+    "logos": {
+      "count": 5,
+      "items": [
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 400,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        },
+        {
+          "alt": "Bottega artigiana Com-Arredo — falegnameria su misura",
+          "naturalWidth": 593,
+          "visible": true
+        },
+        {
+          "alt": "Artigiano al lavoro in bottega — Com-Arredo",
+          "naturalWidth": 593,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        }
+      ],
+      "pass": true
+    },
+    "pass": true
+  },
+  {
+    "viewport": 1024,
+    "carousel": {
+      "offset": 0,
+      "cardCenter": 512,
+      "viewportCenter": 512,
+      "cardWidth": 315,
+      "viewportWidth": 1024,
+      "pass": true
+    },
+    "logos": {
+      "count": 5,
+      "items": [
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 400,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        },
+        {
+          "alt": "Bottega artigiana Com-Arredo — falegnameria su misura",
+          "naturalWidth": 606,
+          "visible": true
+        },
+        {
+          "alt": "Artigiano al lavoro in bottega — Com-Arredo",
+          "naturalWidth": 606,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        }
+      ],
+      "pass": true
+    },
+    "pass": true
+  },
+  {
+    "viewport": 1440,
+    "carousel": {
+      "offset": 0,
+      "cardCenter": 720,
+      "viewportCenter": 720,
+      "cardWidth": 315,
+      "viewportWidth": 1440,
+      "pass": true
+    },
+    "logos": {
+      "count": 5,
+      "items": [
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 400,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        },
+        {
+          "alt": "Bottega artigiana Com-Arredo — falegnameria su misura",
+          "naturalWidth": 480,
+          "visible": true
+        },
+        {
+          "alt": "Artigiano al lavoro in bottega — Com-Arredo",
+          "naturalWidth": 480,
+          "visible": true
+        },
+        {
+          "alt": "Com-Arredo — Falegnameria artigianale",
+          "naturalWidth": 1280,
+          "visible": true
+        }
+      ],
+      "pass": true
+    },
+    "pass": true
+  }
+]
