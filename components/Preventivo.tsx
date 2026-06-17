@@ -9,7 +9,7 @@ export default function Preventivo() {
   return (
     <section id="preventivo" className="bg-antracite py-32 relative overflow-hidden">
       <div className="absolute inset-0 opacity-20 pointer-events-none grayscale" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }} />
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10" style={{ height: '180px', background: 'linear-gradient(to top, #050505 0%, transparent 100%)' }} />
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10 section-fade-bottom-sm" />
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">

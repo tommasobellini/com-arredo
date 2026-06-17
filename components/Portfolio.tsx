@@ -63,6 +63,8 @@ export default function Portfolio() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const carouselSectionRef = useRef<HTMLDivElement>(null)
   const entranceDone = useRef(false)
+  const swipeRef = useRef({ x: 0, y: 0, pointerId: -1 })
+  const didSwipeRef = useRef(false)
 
   const carouselInView = useInView(carouselSectionRef, {
     once: true,
@@ -104,6 +106,42 @@ export default function Portfolio() {
 
   const next = () => setIndex((prev) => (prev + 1) % portfolioItems.length)
   const prev = () => setIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length)
+
+  const SWIPE_THRESHOLD = 48
+
+  const handleSwipePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return
+    swipeRef.current = { x: e.clientX, y: e.clientY, pointerId: e.pointerId }
+    e.currentTarget.setPointerCapture(e.pointerId)
+  }
+
+  const handleSwipePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (swipeRef.current.pointerId !== e.pointerId) return
+
+    const deltaX = e.clientX - swipeRef.current.x
+    const deltaY = e.clientY - swipeRef.current.y
+    swipeRef.current.pointerId = -1
+
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId)
+    }
+
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD) return
+    if (Math.abs(deltaX) <= Math.abs(deltaY)) return
+
+    didSwipeRef.current = true
+    if (deltaX < 0) next()
+    else prev()
+  }
+
+  const handleSwipePointerCancel = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (swipeRef.current.pointerId === e.pointerId) {
+      swipeRef.current.pointerId = -1
+    }
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId)
+    }
+  }
 
   return (
     <section id="portfolio" className="bg-granite py-32 overflow-hidden relative">
@@ -152,15 +190,14 @@ export default function Portfolio() {
       <div ref={carouselSectionRef} className="portfolio-carousel-fullwidth relative z-20">
         <motion.div
           ref={wrapperRef}
-          className="portfolio-carousel-wrapper relative touch-pan-y"
+          className="portfolio-carousel-wrapper relative"
           style={{ '--carousel-height': `${carouselHeight}px` } as CSSProperties}
           initial={{ opacity: 0 }}
           animate={{ opacity: carouselInView ? 1 : 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          onPanEnd={(_, info) => {
-            if (info.offset.x < -50) next()
-            else if (info.offset.x > 50) prev()
-          }}
+          onPointerDown={handleSwipePointerDown}
+          onPointerUp={handleSwipePointerUp}
+          onPointerCancel={handleSwipePointerCancel}
         >
           {portfolioItems.map((item, i) => {
             const isActive = i === index
@@ -190,7 +227,13 @@ export default function Portfolio() {
                 }}
                 className={`portfolio-card wood-frame group cursor-pointer ${isActive ? 'shadow-accent' : ''}`}
                 style={{ width: cardWidth, height: cardHeight }}
-                onClick={() => setIndex(i)}
+                onClick={() => {
+                  if (didSwipeRef.current) {
+                    didSwipeRef.current = false
+                    return
+                  }
+                  setIndex(i)
+                }}
               >
                 <div className="relative h-full w-full overflow-hidden">
                   <Image

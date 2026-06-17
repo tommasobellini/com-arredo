@@ -25,6 +25,11 @@ const BASE_URL = 'https://comarredo.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  icons: {
+    icon: [{ url: '/logo/COMARREDO-ICONA-VERDE.png', type: 'image/png' }],
+    apple: '/logo/COMARREDO-ICONA-VERDE.png',
+    shortcut: '/logo/COMARREDO-ICONA-VERDE.png',
+  },
   title: {
     default: 'Com-Arredo | Falegnameria Artigianale dal 1991 — Cortenuova, Bergamo',
     template: '%s | Com-Arredo',
