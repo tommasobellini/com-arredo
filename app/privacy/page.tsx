@@ -3,11 +3,14 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import LegalContent from '@/components/LegalContent'
 import { site } from '@/lib/site'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Privacy Policy',
-  alternates: { canonical: 'https://comarredo.com/privacy' },
-}
+  description:
+    'Informativa privacy di Com-Arredo S.R.L. sul trattamento dei dati personali raccolti tramite il sito, in conformità al GDPR.',
+  path: '/privacy',
+})
 
 export default function PrivacyPage() {
   return (

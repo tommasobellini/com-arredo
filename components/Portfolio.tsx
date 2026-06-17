@@ -240,6 +240,7 @@ export default function Portfolio() {
                     src={item.img}
                     alt={item.title}
                     fill
+                    sizes="(max-width: 768px) 72vw, 300px"
                     className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                   />
 

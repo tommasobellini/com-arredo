@@ -15,6 +15,6 @@ export const brandLogosByTheme: Record<ThemeId, string> = {
 export const brandAlt = 'Com-Arredo — Falegnameria artigianale'
 
 export const brandDimensions = {
-  full: { width: 1280, height: 400 },
-  icon: { width: 400, height: 400 },
+  full: { width: 300, height: 60 },
+  icon: { width: 48, height: 48 },
 } as const

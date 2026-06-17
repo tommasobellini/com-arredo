@@ -5,19 +5,23 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import PreventivoForm from '@/components/PreventivoForm'
+import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
 import { site } from '@/lib/site'
+import { createPageMetadata, jsonLdContactPage } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Contatti',
-  description:
-    `Contatta Com-Arredo per preventivi gratuiti. ${site.address.full}. Email: ${site.email}. Falegnameria artigianale Bergamo.`,
-  alternates: { canonical: 'https://comarredo.com/contatti' },
-}
+  description: `Contatta Com-Arredo per preventivi gratuiti. ${site.address.full}. Email: ${site.email}. Falegnameria artigianale Bergamo.`,
+  path: '/contatti',
+  image: images.woodGrain,
+  imageAlt: 'Contatti Com-Arredo — falegnameria artigianale Bergamo',
+})
 
 export default function ContattiPage() {
   return (
     <main>
+      <JsonLd data={jsonLdContactPage()} />
       <Navbar />
       <PageHero
         eyebrow="PARLIAMO DEL TUO PROGETTO"
@@ -80,4 +84,3 @@ export default function ContattiPage() {
     </main>
   )
 }
-

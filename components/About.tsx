@@ -14,6 +14,7 @@ export default function About() {
           src={images.about}
           alt="Artigiano al lavoro in bottega — Com-Arredo"
           fill
+          sizes="100vw"
           className="object-cover"
           style={{ opacity: 0.4, objectPosition: 'center 50%' }}
         />

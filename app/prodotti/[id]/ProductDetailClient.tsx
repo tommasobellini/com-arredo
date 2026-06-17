@@ -36,6 +36,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 src={data.image}
                 alt={`${data.title} — Com-Arredo falegnameria artigianale`}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
                 priority
               />

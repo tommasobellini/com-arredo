@@ -3,11 +3,14 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import LegalContent from '@/components/LegalContent'
 import { site } from '@/lib/site'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Termini e Condizioni',
-  alternates: { canonical: 'https://comarredo.com/termini' },
-}
+  description:
+    'Termini e condizioni d\'uso del sito Com-Arredo S.R.L.: preventivi, proprietà intellettuale e legge applicabile.',
+  path: '/termini',
+})
 
 export default function TerminiPage() {
   return (

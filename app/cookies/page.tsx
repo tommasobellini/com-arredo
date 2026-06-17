@@ -2,11 +2,14 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import LegalContent from '@/components/LegalContent'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Cookie Policy',
-  alternates: { canonical: 'https://comarredo.com/cookies' },
-}
+  description:
+    'Informativa sui cookie utilizzati dal sito Com-Arredo: cookie tecnici necessari e gestione delle preferenze di navigazione.',
+  path: '/cookies',
+})
 
 export default function CookiesPage() {
   return (

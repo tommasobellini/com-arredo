@@ -26,7 +26,14 @@ export default function PageHero({
         transition={{ duration: 1 }}
         className="absolute inset-0 z-0"
       >
-        <Image src={image} alt="" fill className="object-cover opacity-25" priority />
+        <Image
+          src={image}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-25"
+          aria-hidden
+        />
         <motion.div className="absolute inset-0 page-hero-overlay" />
       </motion.div>
 

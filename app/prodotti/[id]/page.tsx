@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ProductDetailClient from './ProductDetailClient'
+import JsonLd from '@/components/JsonLd'
 import { productsData, productSlugs } from './data'
+import { createPageMetadata, jsonLdProduct } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -24,28 +26,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const title = `${data.title} | Falegnameria Artigianale`
-  const description = `${data.description} Realizzato da Com-Arredo S.R.L., falegnameria artigianale italiana dal 1991 a Cortenuova (BG).`
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `https://comarredo.com/prodotti/${id}`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `https://comarredo.com/prodotti/${id}`,
-      images: [{ url: data.image, width: 1200, height: 800, alt: data.title }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [data.image],
-    },
-  }
+  return createPageMetadata({
+    title: data.title,
+    description: `${data.description} Realizzato da Com-Arredo S.R.L., falegnameria artigianale italiana dal 1991 a Cortenuova (BG).`,
+    path: `/prodotti/${id}`,
+    image: data.image,
+    imageAlt: `${data.title} — Com-Arredo falegnameria artigianale`,
+  })
 }
 
 export default async function ProductDetailPage({ params }: Props) {
@@ -53,35 +40,11 @@ export default async function ProductDetailPage({ params }: Props) {
 
   if (!productsData[id]) notFound()
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: productsData[id].title,
-    description: productsData[id].description,
-    image: `https://comarredo.com${productsData[id].image}`,
-    brand: {
-      '@type': 'Brand',
-      name: 'Com-Arredo',
-    },
-    manufacturer: {
-      '@type': 'Organization',
-      name: 'Com-Arredo S.R.L.',
-      url: 'https://comarredo.com',
-    },
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      priceCurrency: 'EUR',
-      seller: { '@type': 'Organization', name: 'Com-Arredo S.R.L.' },
-    },
-  }
+  const data = productsData[id]
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLdProduct(id, data)} />
       <Navbar />
       <ProductDetailClient id={id} />
       <Footer />

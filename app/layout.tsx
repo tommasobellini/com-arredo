@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Fraunces, Outfit } from 'next/font/google'
 import ThemeProvider from '@/components/ThemeProvider'
+import { siteUrl } from '@/lib/seo'
+import { ogImage } from '@/lib/images'
 import './globals.css'
 
 const fraunces = Fraunces({
@@ -21,7 +23,7 @@ export const viewport: Viewport = {
   themeColor: '#348059',
 }
 
-const BASE_URL = 'https://comarredo.com'
+const BASE_URL = siteUrl
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -76,11 +78,11 @@ export const metadata: Metadata = {
       'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano a Cortenuova (BG). L\'eccellenza del legno artigianale italiano dal 1991.',
     images: [
       {
-        url: '/hero.png',
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: 'Com-Arredo — Falegnameria Artigianale Italiana dal 1991',
-        type: 'image/jpeg',
+        type: 'image/png',
       },
     ],
   },
@@ -89,7 +91,7 @@ export const metadata: Metadata = {
     title: 'Com-Arredo | Falegnameria Artigianale dal 1991',
     description:
       'Mobili su misura, infissi e arredi d\'interni di lusso realizzati a mano. L\'eccellenza del legno artigianale italiano.',
-    images: ['/hero.png'],
+    images: [ogImage],
   },
   alternates: {
     canonical: BASE_URL,

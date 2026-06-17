@@ -1,8 +1,39 @@
 import { NextResponse } from 'next/server'
 import { site } from '@/lib/site'
 
+const rateLimit = new Map<string, { count: number; resetAt: number }>()
+const WINDOW_MS = 60_000
+const MAX_REQUESTS = 5
+
+function isRateLimited(ip: string) {
+  const now = Date.now()
+  const entry = rateLimit.get(ip)
+
+  if (!entry || now > entry.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + WINDOW_MS })
+    return false
+  }
+
+  if (entry.count >= MAX_REQUESTS) return true
+
+  entry.count += 1
+  return false
+}
+
 export async function POST(request: Request) {
   try {
+    const ip =
+      request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+      request.headers.get('x-real-ip') ||
+      'unknown'
+
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'Troppe richieste. Riprova tra un minuto.' },
+        { status: 429 }
+      )
+    }
+
     const body = await request.json()
     const nome = String(body.nome || '').trim()
     const cognome = String(body.cognome || '').trim()

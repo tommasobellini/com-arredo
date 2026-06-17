@@ -15,6 +15,7 @@ export default function Hero() {
           alt="Bottega artigiana Com-Arredo — falegnameria su misura"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
           style={{ objectPosition: 'center 40%', opacity: 0.5 }}
         />

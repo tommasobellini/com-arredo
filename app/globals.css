@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700&display=swap');
-
 :root {
   --green-900: #1a2e24;
   --green-700: #2a6348;
@@ -624,6 +622,15 @@ textarea.input-field {
 .h-40 { height: 10rem; }
 
 /* Portfolio carousel */
+.preventivo-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  background: var(--gradient-surface-noise);
+}
+
 .portfolio-carousel-fullwidth {
   width: 100%;
   overflow: hidden;

@@ -4,20 +4,30 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
 import { services } from '@/lib/site'
 import ProcessSection from '@/components/ProcessSection'
+import { createPageMetadata, jsonLdBreadcrumb } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Produzione',
   description:
     'Cucine, infissi, camere e arredi su misura realizzati a mano da Com-Arredo. Falegnameria artigianale a Cortenuova (BG) dal 1991.',
-  alternates: { canonical: 'https://comarredo.com/produzione' },
-}
+  path: '/produzione',
+  image: images.workshop,
+  imageAlt: 'Bottega artigianale Com-Arredo — produzione su misura',
+})
 
 export default function ProduzionePage() {
   return (
     <main>
+      <JsonLd
+        data={jsonLdBreadcrumb([
+          { name: 'Home', path: '/' },
+          { name: 'Produzione', path: '/produzione' },
+        ])}
+      />
       <Navbar />
       <PageHero
         eyebrow="I NOSTRI SERVIZI"
@@ -40,6 +50,7 @@ export default function ProduzionePage() {
                     src={images.produzione[service.imageKey]}
                     alt={service.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover opacity-70 group-hover:opacity-100 transition-opacity"
                   />
                 </div>

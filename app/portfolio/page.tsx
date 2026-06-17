@@ -4,19 +4,29 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
+import { createPageMetadata, jsonLdBreadcrumb } from '@/lib/seo'
 import { productsData, productSlugs } from '@/app/prodotti/[id]/data'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Portfolio',
   description:
     'Progetti realizzati da Com-Arredo: cucine, soggiorni, camere e infissi in legno su misura. Falegnameria artigianale Bergamo.',
-  alternates: { canonical: 'https://comarredo.com/portfolio' },
-}
+  path: '/portfolio',
+  image: images.portfolio.soggiorno,
+  imageAlt: 'Soggiorno su misura Com-Arredo — portfolio falegnameria',
+})
 
 export default function PortfolioPage() {
   return (
     <main>
+      <JsonLd
+        data={jsonLdBreadcrumb([
+          { name: 'Home', path: '/' },
+          { name: 'Portfolio', path: '/portfolio' },
+        ])}
+      />
       <Navbar />
       <PageHero
         eyebrow="I NOSTRI LAVORI"
@@ -38,6 +48,7 @@ export default function PortfolioPage() {
                       src={item.image}
                       alt={item.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover opacity-85 group-hover:opacity-100 transition-opacity"
                     />
                     <div className="portfolio-grid-overlay">

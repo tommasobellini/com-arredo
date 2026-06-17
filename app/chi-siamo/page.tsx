@@ -4,15 +4,18 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
 import { site } from '@/lib/site'
+import { createPageMetadata, jsonLdBreadcrumb } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Chi Siamo',
-  description:
-    `Storia e valori di Com-Arredo: falegnameria artigianale a ${site.address.city} dal ${site.founded}. Tradizione, legno certificato e design su misura.`,
-  alternates: { canonical: 'https://comarredo.com/chi-siamo' },
-}
+  description: `Storia e valori di Com-Arredo: falegnameria artigianale a ${site.address.city} dal ${site.founded}. Tradizione, legno certificato e design su misura.`,
+  path: '/chi-siamo',
+  image: images.about,
+  imageAlt: 'Bottega Com-Arredo — falegnameria artigianale dal 1991',
+})
 
 const values = [
   { title: 'Artigianato', text: 'Ogni pezzo è lavorato in bottega, senza produzione industriale di serie.' },
@@ -24,6 +27,12 @@ const values = [
 export default function ChiSiamoPage() {
   return (
     <main>
+      <JsonLd
+        data={jsonLdBreadcrumb([
+          { name: 'Home', path: '/' },
+          { name: 'Chi Siamo', path: '/chi-siamo' },
+        ])}
+      />
       <Navbar />
       <PageHero
         eyebrow="DAL 1991"
@@ -55,7 +64,13 @@ export default function ChiSiamoPage() {
             </div>
           </div>
           <div className="wood-frame relative aspect-4-3">
-            <Image src={images.workshop} alt="Dettaglio lavorazione legno" fill className="object-cover" />
+            <Image
+              src={images.workshop}
+              alt="Dettaglio lavorazione legno in bottega Com-Arredo"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
