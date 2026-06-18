@@ -1,13 +1,17 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import SectionDivider from '@/components/SectionDivider'
-import MaterialExplorer from '@/components/MaterialExplorer'
 import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
 import { createPageMetadata, jsonLdBreadcrumb } from '@/lib/seo'
+
+const MaterialExplorer = dynamic(() => import('@/components/MaterialExplorer'), {
+  loading: () => <div className="section-loading" aria-hidden />,
+})
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Materiali — Essenze e finiture',
@@ -20,7 +24,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function MaterialiPage() {
   return (
-    <main>
+    <main id="main-content">
       <JsonLd
         data={jsonLdBreadcrumb([
           { name: 'Home', path: '/' },
@@ -49,7 +53,7 @@ export default function MaterialiPage() {
           </p>
           <div className="section-actions section-actions--center">
             <Link href="/contatti" className="btn-primary">
-              Richiedi consulenza
+              Richiedi preventivo
             </Link>
             <Link href="/produzione" className="btn-secondary">
               I nostri servizi

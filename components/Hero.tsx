@@ -55,7 +55,7 @@ export default function Hero() {
             style={{ marginTop: '3rem' }}
           >
             <Link href="/portfolio" className="btn-primary w-full md:min-w-240">
-              ESPLORA COLLEZIONE
+              VEDI ESEMPI DI FINITURA
             </Link>
             <Link href="/chi-siamo" className="btn-secondary w-full md:min-w-240">
               SCOPRI DI PIÙ

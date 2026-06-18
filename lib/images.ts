@@ -2,7 +2,7 @@
 const cat = (name: string) => `/generated/categories/${name}.png`
 const mat = (name: string) => `/generated/materials/${name}.png`
 
-export const ogImage = '/hero.png'
+export const ogImage = '/og.png'
 
 export const images = {
   hero: '/hero.png',

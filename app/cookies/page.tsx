@@ -17,13 +17,14 @@ export default function CookiesPage() {
       <Navbar />
       <LegalContent title="Cookie Policy">
         <p className="mb-6">
-          Questo sito utilizza cookie tecnici necessari al funzionamento (es. sessione manutenzione) e,
-          previo consenso, strumenti di analisi per migliorare l&apos;esperienza di navigazione.
+          Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento (es. sessione manutenzione
+          e preferenza tema). Non utilizziamo cookie di profilazione né strumenti di analytics di terze parti.
         </p>
         <h2 className="serif text-xl text-white mt-10 mb-4">Cookie tecnici</h2>
         <p className="mb-6">
           Il cookie <code className="text-accent">maintenance_bypass</code> consente l&apos;accesso al sito durante
-          la fase di aggiornamento, se autorizzato. Non richiede consenso.
+          la fase di aggiornamento, se autorizzato. La preferenza del tema può essere memorizzata localmente dal browser.
+          Non richiedono consenso.
         </p>
         <h2 className="serif text-xl text-white mt-10 mb-4">Gestione delle preferenze</h2>
         <p className="mb-6">

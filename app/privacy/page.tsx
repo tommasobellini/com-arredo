@@ -40,6 +40,23 @@ export default function PrivacyPage() {
         <p className="mb-6">
           Puoi richiedere accesso, rettifica, cancellazione, limitazione o opposizione al trattamento scrivendo a{' '}
           <a href={`mailto:${site.email}`} className="text-accent">{site.email}</a>.
+          Hai inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali.
+        </p>
+        <h2 className="serif text-xl text-white mt-10 mb-4">Conservazione dei dati</h2>
+        <p className="mb-6">
+          I dati del form preventivo sono conservati per il tempo necessario a gestire la richiesta e per eventuali
+          obblighi di legge, generalmente non oltre 24 mesi dall&apos;ultimo contatto, salvo avvio di un rapporto contrattuale.
+        </p>
+        <h2 className="serif text-xl text-white mt-10 mb-4">Responsabili e fornitori</h2>
+        <p className="mb-6">
+          Per l&apos;invio delle email di contatto utilizziamo Resend (fornitore di posta elettronica). I dati possono essere
+          trattati su infrastrutture del provider di hosting del sito. I fornitori sono selezionati tra soggetti che
+          offrono garanzie adeguate in conformità al GDPR.
+        </p>
+        <h2 className="serif text-xl text-white mt-10 mb-4">Cookie</h2>
+        <p className="mb-6">
+          Per i cookie tecnici e le preferenze di navigazione consulta la{' '}
+          <a href="/cookies" className="text-accent">Cookie Policy</a>.
         </p>
       </LegalContent>
       <Footer dividerFrom="base" />

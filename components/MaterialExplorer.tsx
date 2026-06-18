@@ -76,7 +76,6 @@ export default function MaterialExplorer() {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover materials-preview-image"
-                priority
               />
               <div
                 className="materials-preview-accent"
@@ -115,6 +114,7 @@ export default function MaterialExplorer() {
                     alt=""
                     fill
                     sizes="120px"
+                    loading="lazy"
                     className="object-cover"
                     aria-hidden
                   />

@@ -1,21 +1,68 @@
 import type { Metadata, Viewport } from 'next'
-import { Fraunces, Outfit } from 'next/font/google'
-import ThemeProvider from '@/components/ThemeProvider'
+import {
+  Bitter,
+  DM_Sans,
+  Karla,
+  Mulish,
+  Petrona,
+  Vollkorn,
+} from 'next/font/google'
+import Providers from '@/components/Providers'
+import { defaultFontTheme } from '@/lib/fonts'
 import { siteUrl } from '@/lib/seo'
 import { ogImage } from '@/lib/images'
 import './globals.css'
 
-const fraunces = Fraunces({
+const petrona = Petrona({
   subsets: ['latin'],
+  weight: ['400', '600', '700'],
   display: 'swap',
-  variable: '--font-fraunces',
+  variable: '--font-petrona',
 })
 
-const outfit = Outfit({
+const karla = Karla({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-outfit',
+  variable: '--font-karla',
 })
+
+const bitter = Bitter({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  display: 'swap',
+  variable: '--font-bitter',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-dm-sans',
+})
+
+const vollkorn = Vollkorn({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  display: 'swap',
+  variable: '--font-vollkorn',
+})
+
+const mulish = Mulish({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-mulish',
+})
+
+const fontVariableClasses = [
+  petrona.variable,
+  karla.variable,
+  bitter.variable,
+  dmSans.variable,
+  vollkorn.variable,
+  mulish.variable,
+].join(' ')
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -28,7 +75,10 @@ const BASE_URL = siteUrl
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   icons: {
-    icon: [{ url: '/logo/COMARREDO-ICONA-VERDE.png', type: 'image/png' }],
+    icon: [
+      { url: '/logo/COMARREDO-ICONA-VERDE.svg', type: 'image/svg+xml' },
+      { url: '/logo/COMARREDO-ICONA-VERDE.png', type: 'image/png' },
+    ],
     apple: '/logo/COMARREDO-ICONA-VERDE.png',
     shortcut: '/logo/COMARREDO-ICONA-VERDE.png',
   },
@@ -108,11 +158,23 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="it" className={`${fraunces.variable} ${outfit.variable}`} suppressHydrationWarning data-theme="dark">
+    <html
+      lang="it"
+      className={fontVariableClasses}
+      suppressHydrationWarning
+      data-theme="dark"
+      data-font={defaultFontTheme}
+    >
       <body className="antialiased">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var f=localStorage.getItem('comarredo-font');if(f)document.documentElement.setAttribute('data-font',f)}catch(e){}})();`,
+          }}
+        />
+        <a href="#main-content" className="skip-link">
+          Vai al contenuto
+        </a>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

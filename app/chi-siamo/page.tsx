@@ -27,7 +27,7 @@ const values = [
 
 export default function ChiSiamoPage() {
   return (
-    <main>
+    <main id="main-content">
       <JsonLd
         data={jsonLdBreadcrumb([
           { name: 'Home', path: '/' },

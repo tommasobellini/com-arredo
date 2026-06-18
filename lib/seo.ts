@@ -200,15 +200,8 @@ export function jsonLdProduct(
         offers: {
           '@type': 'Offer',
           url: productUrl,
-          availability: 'https://schema.org/InStock',
-          price: 0,
-          priceCurrency: 'EUR',
-          priceSpecification: {
-            '@type': 'PriceSpecification',
-            priceCurrency: 'EUR',
-            price: 0,
-            description: 'Prezzo su preventivo personalizzato',
-          },
+          availability: 'https://schema.org/PreOrder',
+          description: 'Prezzo su preventivo personalizzato',
           seller: { '@type': 'Organization', name: site.name },
         },
       },

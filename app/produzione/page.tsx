@@ -22,7 +22,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ProduzionePage() {
   return (
-    <main>
+    <main id="main-content">
       <JsonLd
         data={jsonLdBreadcrumb([
           { name: 'Home', path: '/' },

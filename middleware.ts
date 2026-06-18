@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { resolveMaintenancePassword, verifyMaintenanceBypassToken } from '@/lib/maintenance-token'
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const isMaintenanceMode = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true'
-  const isBypassCookie = request.cookies.get('maintenance_bypass')?.value === 'true'
+  const maintenancePassword = resolveMaintenancePassword()
+  const bypassToken = request.cookies.get('maintenance_bypass')?.value
+  const isBypassCookie = await verifyMaintenanceBypassToken(maintenancePassword || '', bypassToken)
   const { pathname } = request.nextUrl
 
-  // Se la manutenzione è attiva e l'utente non ha il cookie di bypass
   if (isMaintenanceMode && !isBypassCookie) {
-    // Permetti l'accesso alla pagina di manutenzione e alle API/risorse statiche
     if (
       pathname.startsWith('/maintenance') ||
       pathname.startsWith('/api') ||
@@ -18,13 +19,11 @@ export function middleware(request: NextRequest) {
       return NextResponse.next()
     }
 
-    // Redirect alla pagina di manutenzione
     const url = request.nextUrl.clone()
     url.pathname = '/maintenance'
     return NextResponse.redirect(url)
   }
 
-  // Se la manutenzione non è attiva e l'utente prova ad andare in /maintenance
   if (!isMaintenanceMode && pathname.startsWith('/maintenance')) {
     const url = request.nextUrl.clone()
     url.pathname = '/'

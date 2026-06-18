@@ -156,6 +156,18 @@ export default function Portfolio() {
     }
   }
 
+  const handleCarouselKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      prev()
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      next()
+    }
+  }
+
+  const activeItem = portfolioItems[index]
+
   return (
     <section id="portfolio" className="bg-granite py-32 overflow-hidden relative">
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10 section-fade-bottom" />
@@ -184,7 +196,7 @@ export default function Portfolio() {
           </div>
 
           <div className="portfolio-header-actions flex gap-4 items-center">
-            <Link href="/portfolio" className="nav-link hidden md:block mr-4">
+            <Link href="/portfolio" className="nav-link mr-4">
               Vedi tutto
             </Link>
             <button
@@ -205,7 +217,18 @@ export default function Portfolio() {
         </motion.div>
       </motion.div>
 
-      <div ref={carouselSectionRef} className="portfolio-carousel-fullwidth relative z-20">
+      <div
+        ref={carouselSectionRef}
+        className="portfolio-carousel-fullwidth relative z-20"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Esempi di finitura portfolio"
+        tabIndex={0}
+        onKeyDown={handleCarouselKeyDown}
+      >
+        <p className="sr-only" aria-live="polite">
+          {activeItem.title}
+        </p>
         <motion.div
           ref={wrapperRef}
           className="portfolio-carousel-wrapper relative"
@@ -305,10 +328,17 @@ export default function Portfolio() {
           {portfolioItems.map((_, i) => (
             <button
               key={i}
+              type="button"
               onClick={() => setIndex(i)}
-              aria-label={`Slide ${i + 1}`}
-              className={`h-1 rounded-full transition-all ${i === index ? 'w-12 bg-accent' : 'w-6 bg-white-10'}`}
-            />
+              aria-label={`Slide ${i + 1}: ${portfolioItems[i].title}`}
+              aria-current={i === index ? 'true' : undefined}
+              className="carousel-dot"
+            >
+              <span
+                className={`carousel-dot-bar ${i === index ? 'carousel-dot-bar--active' : ''}`}
+                aria-hidden
+              />
+            </button>
           ))}
         </motion.div>
       </div>

@@ -1,14 +1,21 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
-import Portfolio from '@/components/Portfolio'
 import About from '@/components/About'
-import Preventivo from '@/components/Preventivo'
 import Footer from '@/components/Footer'
 import SectionDivider from '@/components/SectionDivider'
 import JsonLd from '@/components/JsonLd'
 import { createPageMetadata, jsonLdHomeGraph } from '@/lib/seo'
 import { ogImage } from '@/lib/images'
+
+const Portfolio = dynamic(() => import('@/components/Portfolio'), {
+  loading: () => <div className="section-loading" aria-hidden />,
+})
+
+const Preventivo = dynamic(() => import('@/components/Preventivo'), {
+  loading: () => <div className="section-loading" aria-hidden />,
+})
 
 export const metadata: Metadata = {
   ...createPageMetadata({
@@ -25,7 +32,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={jsonLdHomeGraph()} />
-      <main>
+      <main id="main-content">
         <Navbar />
         <Hero />
         <SectionDivider from="elevated" to="base" />

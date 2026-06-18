@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import { Mail, MapPin, Clock } from 'lucide-react'
+import { Suspense } from 'react'
+import { Mail, MapPin, Clock, Phone } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
-import PreventivoForm from '@/components/PreventivoForm'
+import ContattiFormSection from '@/components/ContattiFormSection'
 import JsonLd from '@/components/JsonLd'
 import { images } from '@/lib/images'
 import { site } from '@/lib/site'
@@ -20,7 +21,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ContattiPage() {
   return (
-    <main>
+    <main id="main-content">
       <JsonLd data={jsonLdContactPage()} />
       <Navbar />
       <PageHero
@@ -52,6 +53,15 @@ export default function ContattiPage() {
               <a href={`mailto:${site.email}`} className="hover-text-white transition-colors">{site.email}</a>
             </div>
 
+            {site.phone && (
+              <div className="flex items-center gap-4 text-white-60">
+                <Phone size={20} className="text-accent flex-shrink-0" />
+                <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="hover-text-white transition-colors">
+                  {site.phone}
+                </a>
+              </div>
+            )}
+
             <div className="flex items-start gap-4 text-white-60">
               <Clock size={20} className="text-accent flex-shrink-0 mt-1" />
               <div>
@@ -76,7 +86,9 @@ export default function ContattiPage() {
 
           <div>
             <h2 className="serif text-3xl text-white mb-8">Richiedi preventivo</h2>
-            <PreventivoForm />
+            <Suspense fallback={<div className="text-white-60 text-sm">Caricamento modulo...</div>}>
+              <ContattiFormSection />
+            </Suspense>
           </div>
         </div>
       </section>

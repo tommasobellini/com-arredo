@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-antracite text-white flex flex-col">
+    <main id="main-content" className="min-h-screen bg-antracite text-white flex flex-col">
       <Navbar />
       <div className="flex-1 flex items-center justify-center px-6 py-24">
         <div className="text-center max-w-md">
@@ -24,7 +24,7 @@ export default function NotFound() {
               Torna alla home
             </Link>
             <Link href="/contatti" className="btn-secondary">
-              Contattaci
+              Richiedi preventivo
             </Link>
           </div>
         </div>

@@ -6,6 +6,7 @@ const VIEWPORT = { width: 390, height: 844 }
 const routes = [
   '/',
   '/produzione',
+  '/materiali',
   '/portfolio',
   '/chi-siamo',
   '/contatti',

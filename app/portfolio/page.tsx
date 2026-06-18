@@ -20,7 +20,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function PortfolioPage() {
   return (
-    <main>
+    <main id="main-content">
       <JsonLd
         data={jsonLdBreadcrumb([
           { name: 'Home', path: '/' },
