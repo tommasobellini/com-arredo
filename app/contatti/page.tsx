@@ -27,7 +27,7 @@ export default function ContattiPage() {
       <PageHero
         eyebrow="PARLIAMO DEL TUO PROGETTO"
         title="Contatti"
-        subtitle="Compila il modulo o scrivici: ti rispondiamo entro 24 ore lavorative con una prima valutazione senza impegno."
+        subtitle="Compila il modulo o scrivici: verrai ricontattato al più presto con una prima valutazione senza impegno."
         image={images.woodGrain}
         dividerTo="elevated"
       />

@@ -5,7 +5,7 @@ const mat = (name: string) => `/generated/materials/${name}.png`
 export const ogImage = '/og.png'
 
 export const images = {
-  hero: '/hero.png',
+  hero: '/generated/hero/bottega-hero.png',
   about: '/about.png',
   workshop: '/detail.png',
   woodGrain: '/detail.png',

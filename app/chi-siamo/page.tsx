@@ -1,11 +1,20 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ComponentType } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import SectionDivider from '@/components/SectionDivider'
 import JsonLd from '@/components/JsonLd'
+import {
+  IconArtigianato,
+  IconDettaglio,
+  IconDurata,
+  IconMateriali,
+  IconSuMisura,
+  IconTerritorio,
+} from '@/components/icons/ValueIcons'
 import { images } from '@/lib/images'
 import { site } from '@/lib/site'
 import { createPageMetadata, jsonLdBreadcrumb } from '@/lib/seo'
@@ -18,11 +27,41 @@ export const metadata: Metadata = createPageMetadata({
   imageAlt: 'Bottega Com-Arredo — falegnameria artigianale dal 1991',
 })
 
-const values = [
-  { title: 'Artigianato', text: 'Ogni pezzo è lavorato in bottega, senza produzione industriale di serie.' },
-  { title: 'Materiali', text: 'Essenze pregiate da filiere certificate, finiture naturali e durature.' },
-  { title: 'Su misura', text: 'Progetti personalizzati in dialogo diretto con il cliente.' },
-  { title: 'Territorio', text: 'Radicati in Lombardia, operativi su Bergamo, Milano e tutta Italia.' },
+const values: {
+  title: string
+  text: string
+  icon: ComponentType<{ className?: string }>
+}[] = [
+  {
+    title: 'Artigianato',
+    text: 'Ogni pezzo è lavorato in bottega, senza produzione industriale di serie.',
+    icon: IconArtigianato,
+  },
+  {
+    title: 'Materiali',
+    text: 'Essenze pregiate da filiere certificate, finiture naturali e durature.',
+    icon: IconMateriali,
+  },
+  {
+    title: 'Su misura',
+    text: 'Progetti personalizzati in dialogo diretto con il cliente.',
+    icon: IconSuMisura,
+  },
+  {
+    title: 'Territorio',
+    text: 'Radicati in Lombardia, operativi su Bergamo, Milano e tutta Italia.',
+    icon: IconTerritorio,
+  },
+  {
+    title: 'Dettaglio',
+    text: 'Giunzioni, finiture e incastri controllati a mano in ogni fase della lavorazione.',
+    icon: IconDettaglio,
+  },
+  {
+    title: 'Durata',
+    text: 'Arredi solidi e senza compromessi, pensati per accompagnare le famiglie nel tempo.',
+    icon: IconDurata,
+  },
 ]
 
 export default function ChiSiamoPage() {
@@ -79,16 +118,34 @@ export default function ChiSiamoPage() {
 
       <SectionDivider from="elevated" to="surface" />
 
-      <section className="py-24 bg-granite">
+      <section className="py-24 bg-granite values-section">
         <div className="container">
-          <h2 className="serif text-3xl text-white text-center mb-16">I nostri valori</h2>
-          <div className="grid grid-cols-1 grid-cols-2-md gap-8">
-            {values.map((v) => (
-              <div key={v.title} className="glass-card p-8 border-white-5">
-                <h3 className="serif text-xl text-accent mb-4">{v.title}</h3>
-                <p className="text-white-60 leading-relaxed">{v.text}</p>
-              </div>
-            ))}
+          <header className="values-header">
+            <span className="values-eyebrow">LA NOSTRA FILOSOFIA</span>
+            <h2 className="serif text-3xl text-white">I nostri valori</h2>
+            <p className="values-intro text-white-60">
+              Sei principi che guidano ogni commessa, dalla prima idea alla posa in casa tua.
+            </p>
+          </header>
+          <div className="values-grid">
+            {values.map((v, index) => {
+              const Icon = v.icon
+              const num = String(index + 1).padStart(2, '0')
+              return (
+                <article key={v.title} className="value-card">
+                  <span className="value-card__index" aria-hidden>
+                    {num}
+                  </span>
+                  <div className="value-card__shine" aria-hidden />
+                  <div className="value-icon" aria-hidden>
+                    <Icon className="value-icon__svg" />
+                  </div>
+                  <h3 className="value-card__title serif">{v.title}</h3>
+                  <p className="value-card__text">{v.text}</p>
+                  <span className="value-card__accent-line" aria-hidden />
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>

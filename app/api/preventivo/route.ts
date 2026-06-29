@@ -117,7 +117,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: 'Grazie! Ti risponderemo entro 24 ore lavorative.',
+      message: 'Grazie! Verrai ricontattato al più presto.',
     })
   } catch {
     return NextResponse.json({ error: 'Errore del server.' }, { status: 500 })

@@ -5,25 +5,39 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { images } from '@/lib/images'
 import { staggerContainer, fadeUp, expandWidth } from '@/lib/animations'
+import { useHeroParallax } from '@/lib/parallax'
 
 export default function Hero() {
+  const { ref, bgY, bgScale, contentY, contentOpacity } = useHeroParallax()
+
   return (
-    <section className="relative h-screen flex items-center overflow-hidden pt-0 mt-0 bg-antracite">
-      <motion.div className="absolute inset-0 z-0" initial={{ scale: 1.05 }} animate={{ scale: 1 }} transition={{ duration: 1.2 }}>
-        <Image
-          src={images.hero}
-          alt="Bottega artigiana Com-Arredo — falegnameria su misura"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: 'center 40%', opacity: 0.5 }}
-        />
-        <div className="absolute inset-0 hero-overlay" />
-        <motion.div className="absolute inset-0 bg-gradient-to-t to-transparent" />
+    <section
+      ref={ref}
+      className="relative h-screen flex items-center overflow-hidden pt-0 mt-0 bg-antracite"
+    >
+      <motion.div
+        className="absolute inset-0 z-0 overflow-hidden parallax-layer"
+        style={{ y: bgY, scale: bgScale }}
+      >
+        <div className="parallax-bg-wrap hero-bg-wrap">
+          <div className="hero-ken-burns">
+            <Image
+              src={images.hero}
+              alt="Artigiano alla pialla in bottega — falegnameria Com-Arredo su misura"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover hero-bg-image"
+            />
+          </div>
+          <div className="absolute inset-0 hero-overlay" />
+        </div>
       </motion.div>
 
-      <div className="container relative z-10 text-center">
+      <motion.div
+        className="container relative z-10 text-center parallax-layer"
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -62,9 +76,7 @@ export default function Hero() {
             </Link>
           </motion.div>
         </motion.div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-base to-transparent z-20" />
+      </motion.div>
     </section>
   )
 }

@@ -1,68 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import {
-  Bitter,
-  DM_Sans,
-  Karla,
-  Mulish,
-  Petrona,
-  Vollkorn,
-} from 'next/font/google'
-import Providers from '@/components/Providers'
-import { defaultFontTheme } from '@/lib/fonts'
+import { Raleway } from 'next/font/google'
+import ThemeProvider from '@/components/ThemeProvider'
 import { siteUrl } from '@/lib/seo'
 import { ogImage } from '@/lib/images'
 import './globals.css'
 
-const petrona = Petrona({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  display: 'swap',
-  variable: '--font-petrona',
-})
-
-const karla = Karla({
+const raleway = Raleway({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-karla',
+  variable: '--font-raleway',
 })
-
-const bitter = Bitter({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  display: 'swap',
-  variable: '--font-bitter',
-})
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-dm-sans',
-})
-
-const vollkorn = Vollkorn({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  display: 'swap',
-  variable: '--font-vollkorn',
-})
-
-const mulish = Mulish({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-mulish',
-})
-
-const fontVariableClasses = [
-  petrona.variable,
-  karla.variable,
-  bitter.variable,
-  dmSans.variable,
-  vollkorn.variable,
-  mulish.variable,
-].join(' ')
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -158,23 +106,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="it"
-      className={fontVariableClasses}
-      suppressHydrationWarning
-      data-theme="dark"
-      data-font={defaultFontTheme}
-    >
+    <html lang="it" className={raleway.variable} suppressHydrationWarning data-theme="dark">
       <body className="antialiased">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var f=localStorage.getItem('comarredo-font');if(f)document.documentElement.setAttribute('data-font',f)}catch(e){}})();`,
-          }}
-        />
         <a href="#main-content" className="skip-link">
           Vai al contenuto
         </a>
-        <Providers>{children}</Providers>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   )

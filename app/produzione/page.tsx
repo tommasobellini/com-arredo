@@ -75,8 +75,8 @@ export default function ProduzionePage() {
             ))}
           </div>
           <div className="section-cta-block section-cta-block--center mt-12">
-            <Link href="/materiali" className="text-accent text-xs font-bold tracking-widest uppercase">
-              Esplora materiali e finiture →
+            <Link href="/contatti" className="text-accent text-xs font-bold tracking-widest uppercase">
+              Richiedi campionature in bottega →
             </Link>
           </div>
         </div>

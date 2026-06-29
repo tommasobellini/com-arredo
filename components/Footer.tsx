@@ -6,7 +6,6 @@ import { site } from '@/lib/site'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/produzione', label: 'Produzione' },
-  { href: '/materiali', label: 'Materiali' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/chi-siamo', label: 'Chi siamo' },
   { href: '/contatti', label: 'Contatti' },
@@ -59,8 +58,8 @@ export default function Footer({ dividerFrom = 'elevated' }: { dividerFrom?: Sec
               </Link>
               <span className="footer-logo-line" aria-hidden />
               <p className="footer-tagline">
-                Falegnameria artigianale dal {site.founded}. Mobili su misura e arredi
-                d&apos;interni a Cortenuova (BG).
+                <span>Falegnameria artigianale dal {site.founded}.</span>
+                <span>Mobili su misura e arredi d&apos;interni a Cortenuova (BG).</span>
               </p>
             </div>
 
@@ -70,7 +69,12 @@ export default function Footer({ dividerFrom = 'elevated' }: { dividerFrom?: Sec
                 <ul className="footer-contact-list">
                   <li>
                     <IconMapPin />
-                    <span>{site.address.full}</span>
+                    <span className="footer-address">
+                      <span>{site.address.street}</span>
+                      <span>
+                        {site.address.cap} {site.address.city} ({site.address.province})
+                      </span>
+                    </span>
                   </li>
                   <li>
                     <IconMail />

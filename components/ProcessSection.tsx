@@ -61,7 +61,7 @@ export default function ProcessSection() {
 
         <div className="process-cta">
           <p className="process-cta-text">
-            Hai già un&apos;idea o un progetto da realizzare? Raccontacelo: ti rispondiamo entro 24 ore.
+            Hai già un&apos;idea o un progetto da realizzare? Raccontacelo: ti ricontatteremo al più presto.
           </p>
           <div className="process-cta-actions section-actions" style={{ marginTop: 0 }}>
             <Link href="/contatti" className="btn-primary">

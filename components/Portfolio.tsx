@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import { images } from '@/lib/images'
 import { staggerContainer, fadeUp, expandWidth, viewportOptions } from '@/lib/animations'
+import { useContentParallax, useLayerParallax, useSectionScroll } from '@/lib/parallax'
 
 const portfolioItems = [
   {
@@ -168,12 +169,16 @@ export default function Portfolio() {
 
   const activeItem = portfolioItems[index]
 
+  const { ref: sectionRef, scrollYProgress, reduceMotion } = useSectionScroll()
+  const headerY = useLayerParallax(scrollYProgress, reduceMotion, 72, -72)
+  const carouselY = useLayerParallax(scrollYProgress, reduceMotion, 120, -120)
+
   return (
-    <section id="portfolio" className="bg-granite py-32 overflow-hidden relative">
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10 section-fade-bottom" />
+    <section ref={sectionRef} id="portfolio" className="bg-granite py-32 overflow-hidden relative">
 
       <motion.div
-        className="container relative z-20"
+        className="container relative z-20 parallax-layer"
+        style={{ y: headerY }}
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -217,9 +222,10 @@ export default function Portfolio() {
         </motion.div>
       </motion.div>
 
-      <div
+      <motion.div
         ref={carouselSectionRef}
-        className="portfolio-carousel-fullwidth relative z-20"
+        className="portfolio-carousel-fullwidth relative z-20 parallax-layer"
+        style={{ y: carouselY }}
         role="region"
         aria-roledescription="carousel"
         aria-label="Esempi di finitura portfolio"
@@ -316,9 +322,9 @@ export default function Portfolio() {
             )
           })}
         </motion.div>
-      </div>
+      </motion.div>
 
-      <div className="container relative z-20">
+      <motion.div className="container relative z-20 parallax-layer" style={{ y: carouselY }}>
         <motion.div
           className="flex justify-center gap-4 mt-16"
           initial={{ opacity: 0, y: 24 }}
@@ -341,7 +347,7 @@ export default function Portfolio() {
             </button>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }

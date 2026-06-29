@@ -6,12 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import BrandLogo from '@/components/BrandLogo'
 import ThemeToggle from '@/components/ThemeToggle'
-import FontToggle from '@/components/FontToggle'
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/produzione', label: 'Produzione' },
-  { href: '/materiali', label: 'Materiali' },
   { href: '/portfolio', label: 'Portfolio' },
 ]
 
@@ -96,8 +94,7 @@ export default function Navbar() {
           </Link>
 
           <div className="navbar-actions">
-            <ThemeToggle className="theme-toggle--navbar hidden sm:inline-flex" />
-            <FontToggle className="font-toggle--navbar hidden lg:inline-flex" />
+            <ThemeToggle className="theme-toggle--navbar" />
             {rightLinks.map(({ href, label }) => (
               <Link key={href} href={href} className="nav-link hidden md:block">
                 {label}
@@ -136,10 +133,7 @@ export default function Navbar() {
             aria-label="Menu di navigazione"
           >
             <div className="mobile-menu-content">
-              <div className="mobile-menu-toggles">
-                <ThemeToggle className="theme-toggle--menu" />
-                <FontToggle className="font-toggle--menu" />
-              </div>
+              <ThemeToggle className="theme-toggle--menu" />
               <nav className="mobile-menu-nav" aria-label="Menu mobile">
                 {mobileLinks.map(({ href, label }) => (
                   <Link
