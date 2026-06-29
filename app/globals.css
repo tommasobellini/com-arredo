@@ -1000,21 +1000,21 @@ textarea.input-field {
 
 /* Brand logos */
 :root {
-  --navbar-logo-height: 48px;
-  --footer-logo-height: 40px;
+  --navbar-logo-height: 40px;
+  --footer-logo-height: 34px;
 }
 
 @media (min-width: 768px) {
   :root {
-    --navbar-logo-height: 60px;
-    --footer-logo-height: 46px;
+    --navbar-logo-height: 50px;
+    --footer-logo-height: 38px;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --navbar-logo-height: 68px;
-    --footer-logo-height: 52px;
+    --navbar-logo-height: 56px;
+    --footer-logo-height: 44px;
   }
 }
 
@@ -1027,11 +1027,11 @@ textarea.input-field {
 }
 
 .brand-logo--navbar {
-  max-width: min(300px, 62vw);
+  max-width: min(260px, 58vw);
 }
 
 .brand-logo--footer {
-  max-width: min(260px, 100%);
+  max-width: min(220px, 100%);
 }
 
 .brand-logo--maintenance {
@@ -1371,25 +1371,73 @@ textarea.input-field {
   overflow: hidden;
 }
 
-.hero-ken-burns {
+.hero-slide {
   position: absolute;
   inset: -8%;
+}
+
+.hero-slide--1 {
+  animation: hero-crossfade-1 18s ease-in-out infinite;
+}
+
+.hero-slide--2 {
+  animation: hero-crossfade-2 18s ease-in-out infinite;
+}
+
+.hero-ken-burns {
+  position: absolute;
+  inset: 0;
   will-change: transform;
-  animation: hero-ken-burns 28s ease-in-out infinite alternate;
+}
+
+.hero-ken-burns--1 {
+  animation: hero-ken-burns-a 18s ease-in-out infinite alternate;
+}
+
+.hero-ken-burns--2 {
+  animation: hero-ken-burns-b 18s ease-in-out infinite alternate;
 }
 
 .hero-bg-image {
-  object-position: 62% center;
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
-@keyframes hero-ken-burns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.1) translate(-1.5%, -1%);
-  }
+.hero-dust {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(212, 160, 84, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 75% 55%, rgba(255, 220, 160, 0.08) 0%, transparent 35%);
+  animation: hero-dust-drift 12s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes hero-crossfade-1 {
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes hero-crossfade-2 {
+  0%, 42% { opacity: 0; }
+  50%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes hero-ken-burns-a {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-2%, -1.5%); }
+}
+
+@keyframes hero-ken-burns-b {
+  0% { transform: scale(1.1) translate(1%, 0); }
+  100% { transform: scale(1) translate(-1.5%, -1%); }
+}
+
+@keyframes hero-dust-drift {
+  0% { opacity: 0.35; transform: translate(0, 0); }
+  100% { opacity: 0.65; transform: translate(-2%, 1.5%); }
 }
 
 .hero-overlay {

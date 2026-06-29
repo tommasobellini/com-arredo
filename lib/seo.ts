@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { site } from '@/lib/site'
-import { ogImage } from '@/lib/images'
+import { ogImage, images } from '@/lib/images'
 
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://comarredo.com'
@@ -97,7 +97,7 @@ export function jsonLdLocalBusiness() {
     ...(site.phone ? { telephone: site.phone } : {}),
     foundingDate: site.founded,
     priceRange: '€€€',
-    image: absoluteUrl('/hero.png'),
+    image: absoluteUrl(images.hero),
     logo: absoluteUrl('/logo/COMARREDO-PRIMARY.png'),
     ...(sameAs.length > 0 ? { sameAs } : {}),
     address: {

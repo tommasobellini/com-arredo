@@ -4,8 +4,21 @@ const mat = (name: string) => `/generated/materials/${name}.png`
 
 export const ogImage = '/og.png'
 
+export const heroFrames = [
+  {
+    src: '/generated/hero/hero-shavings.png',
+    alt: 'Riccioli di legno alla luce dorata in bottega',
+    position: '68% center',
+  },
+  {
+    src: '/generated/hero/hero-lumber.png',
+    alt: 'Assi di rovere e raggi di luce in atelier',
+    position: '72% center',
+  },
+] as const
+
 export const images = {
-  hero: '/generated/hero/bottega-hero.png',
+  hero: heroFrames[0].src,
   about: '/about.png',
   workshop: '/detail.png',
   woodGrain: '/detail.png',

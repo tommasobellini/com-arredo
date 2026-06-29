@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { images } from '@/lib/images'
+import { heroFrames } from '@/lib/images'
 import { staggerContainer, fadeUp, expandWidth } from '@/lib/animations'
 import { useHeroParallax } from '@/lib/parallax'
 
@@ -14,22 +14,33 @@ export default function Hero() {
     <section
       ref={ref}
       className="relative h-screen flex items-center overflow-hidden pt-0 mt-0 bg-antracite"
+      aria-label="Com-Arredo — falegnameria artigiana su misura"
     >
       <motion.div
         className="absolute inset-0 z-0 overflow-hidden parallax-layer"
         style={{ y: bgY, scale: bgScale }}
       >
         <div className="parallax-bg-wrap hero-bg-wrap">
-          <div className="hero-ken-burns">
-            <Image
-              src={images.hero}
-              alt="Artigiano alla pialla in bottega — falegnameria Com-Arredo su misura"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover hero-bg-image"
-            />
-          </div>
+          {heroFrames.map((frame, index) => (
+            <div
+              key={frame.src}
+              className={`hero-slide hero-slide--${index + 1}`}
+              aria-hidden={index !== 0}
+            >
+              <div className={`hero-ken-burns hero-ken-burns--${index + 1}`}>
+                <Image
+                  src={frame.src}
+                  alt={frame.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="100vw"
+                  className="object-cover hero-bg-image"
+                  style={{ objectPosition: frame.position }}
+                />
+              </div>
+            </div>
+          ))}
+          <div className="hero-dust" aria-hidden />
           <div className="absolute inset-0 hero-overlay" />
         </div>
       </motion.div>
