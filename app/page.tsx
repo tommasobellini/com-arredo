@@ -35,9 +35,9 @@ export default function Home() {
       <main id="main-content">
         <Navbar />
         <Hero />
-        <SectionDivider from="elevated" to="base" />
+        <SectionDivider from="elevated" to="elevated" />
         <About />
-        <SectionDivider from="base" to="surface" />
+        <SectionDivider from="elevated" to="surface" />
         <Portfolio />
         <SectionDivider from="surface" to="elevated" />
         <Preventivo />

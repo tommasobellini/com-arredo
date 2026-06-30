@@ -6,14 +6,14 @@ export const ogImage = '/og.png'
 
 export const heroFrames = [
   {
-    src: '/generated/hero/hero-shavings.png',
-    alt: 'Riccioli di legno alla luce dorata in bottega',
-    position: '68% center',
+    src: '/generated/hero/hero-shavings.jpg',
+    alt: 'Seghetto e trucioli su banco in legno — bottega artigiana',
+    position: '58% center',
   },
   {
-    src: '/generated/hero/hero-lumber.png',
-    alt: 'Assi di rovere e raggi di luce in atelier',
-    position: '72% center',
+    src: '/generated/hero/hero-lumber.jpg',
+    alt: 'Assi di legno impilate in atelier — materia prima Com-Arredo',
+    position: '42% center',
   },
 ] as const
 

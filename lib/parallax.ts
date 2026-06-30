@@ -41,7 +41,7 @@ export function useHeroParallax() {
   const bgScale = useTransform(
     scrollYProgress,
     [0, 1],
-    staticRange(reduceMotion, 1, 1.18),
+    staticRange(reduceMotion, 1, 1.06),
   )
   const contentY = useTransform(
     scrollYProgress,
@@ -78,7 +78,7 @@ export function useStickyImageParallax() {
   const contentY = useTransform(
     scrollYProgress,
     [0, 1],
-    staticRange(reduceMotion, 120, -80),
+    staticRange(reduceMotion, 0, -56),
   )
 
   return { ref, bgY, bgScale, contentY }

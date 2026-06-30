@@ -1336,35 +1336,34 @@ textarea.input-field {
 
 .parallax-bg-wrap {
   position: absolute;
-  top: -25%;
+  top: -12%;
   right: 0;
-  bottom: -25%;
+  bottom: -12%;
   left: 0;
 }
 
-/* About — sticky background con contenuto che scorre sopra */
-.about-parallax-section {
+/* About — sfondo full-bleed, altezza dal contenuto */
+.about-section {
   position: relative;
-  min-height: 160vh;
+  isolation: isolate;
 }
 
-.about-parallax-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.about-parallax-bg {
+.about-section-bg {
   position: absolute;
-  inset: -20%;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.about-parallax-content {
+.about-section-bg img {
+  opacity: 0.45;
+}
+
+.about-section-inner {
   position: relative;
-  z-index: 2;
-  margin-top: -100vh;
+  z-index: 1;
+  padding-top: clamp(3rem, 7vh, 5rem);
+  padding-bottom: clamp(3rem, 7vh, 5rem);
 }
 
 .hero-bg-wrap {
@@ -1373,7 +1372,7 @@ textarea.input-field {
 
 .hero-slide {
   position: absolute;
-  inset: -8%;
+  inset: -4%;
 }
 
 .hero-slide--1 {
@@ -1427,12 +1426,12 @@ textarea.input-field {
 
 @keyframes hero-ken-burns-a {
   0% { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.12) translate(-2%, -1.5%); }
+  100% { transform: scale(1.05) translate(-1%, -0.75%); }
 }
 
 @keyframes hero-ken-burns-b {
-  0% { transform: scale(1.1) translate(1%, 0); }
-  100% { transform: scale(1) translate(-1.5%, -1%); }
+  0% { transform: scale(1.04) translate(0.5%, 0); }
+  100% { transform: scale(1) translate(-0.75%, -0.5%); }
 }
 
 @keyframes hero-dust-drift {

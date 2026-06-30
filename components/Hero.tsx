@@ -33,6 +33,7 @@ export default function Hero() {
                   alt={frame.alt}
                   fill
                   priority={index === 0}
+                  quality={92}
                   sizes="100vw"
                   className="object-cover hero-bg-image"
                   style={{ objectPosition: frame.position }}
